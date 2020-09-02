@@ -14,14 +14,18 @@ import { getShopDetail, addShopCart } from '@/api'
 import { useEffect, useState } from 'react'
 import joinImgSrc from '../../../utils/joinImgSrc'
 import { connect } from 'dva'
-import {message} from 'antd'
+import { message } from 'antd'
 function ShopDetail(props) {
-    const [shopData, setshopData] = useState({
+    /**
+     * {
         showMainImg: 'https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js',
         name: '国产蓝莓1盒',
         msg: '困了累了来一盒',
         salesVolume: 19232
-    })
+    }
+     * 
+     */
+    const [shopData, setshopData] = useState({});
     useEffect(() => {
         (async function () {
             const result = await getShopDetail(props.match.params.id);
@@ -35,27 +39,29 @@ function ShopDetail(props) {
 
     // 加入购物车
     const onGoShopCar = () => {
-        (async function(){
+        (async function () {
             const result = await addShopCart({
                 fruitId: shopData.fruitId,
                 userId: props.loginData.userId,
                 count: 1
             })
-            if(result.status === 'success'){
+            if (result.status === 'success') {
                 message.success('添加购物车成功');
             }
         }())
-        
+
     }
 
     // 去抢购
     const onGoBuy = () => {
         console.log('立即抢购操作')
     }
+
+    const mianImgSrc = joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount > 1);
     return (
         <div className={styles['shop-detail']}>
             <div className={styles['show-img']}>
-                <img src={joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount > 1)} alt="" />
+                <img src={shopData.fruitImagesUrl == undefined ? '' : mianImgSrc} alt="" />
 
             </div>
             <div className={styles["msg"]}>

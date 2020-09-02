@@ -9,6 +9,7 @@ import DispatchOrDate from '../../component/submitOrder/DispatchOrDate'
 import ShowUserData from '../../component/submitOrder/ShowUserData'
 import joinImgSrc from '../../utils/joinImgSrc'
 import { getAllShop } from '@/api'
+import Loading from '../../component/common/Loading'
 function SubmitOrder(props) {
     const [shopDatas, setshopDatas] = useState([]);
     const [address, setaddress] = useState(0);
@@ -32,13 +33,14 @@ function SubmitOrder(props) {
         }())
     }, [])
     let totalPrice = 0;
-  
+
     shopDatas.forEach(e => totalPrice += e.price);
-    
+    totalPrice = totalPrice.toFixed(2);
     function getActiveShopItem(shops) {
         return shops.filter(e => e.shoppingStatus === 1);
     }
-    return (
+
+    const content = (
         <div className={styles['submit-order']}>
             <ShowUserData
 
@@ -48,7 +50,7 @@ function SubmitOrder(props) {
             />
             <DispatchOrDate />
             <ShopList datas={shopDatas} />
-            <Boon integral={23} />
+            <Boon path={{ integral: '/integralMall', boon: '/myBoon/notApply' }} integral={23} />
             <Placeholder height={96} />
             <div className={styles["summation"]}>
                 <Summation
@@ -61,11 +63,14 @@ function SubmitOrder(props) {
             </div>
 
         </div>
-    )
+    );
+    const loading = <Loading></Loading>;
+    return props.loading ? loading : content;
 }
 const mapStateToProps = state => ({
     shopItems: state.shopCartItem,
-    loginData: state.loginData
+    loginData: state.loginData,
+    loading: state.loading.models.shopCartItem
 })
 const mapDispatchToProps = dispatch => ({
     onGetShopDatas(id) {

@@ -15,13 +15,21 @@ OperateOption.propTypes = {
 }
 
 function OperateOption(props) {
+
     const lis = props.iconAndText.map((e, i) => {
-        const li = (<Link key={i}  to={e.path}><li className={styles['item']}>
-            {typeof e.icon === 'string' ? <img src={e.icon}></img> : props.icon}
-            <p>
-                {e.text}
-            </p>
-        </li>
+        const li = (<Link
+            key={i}
+            to={{
+                pathname: e.path,
+                state: e.state
+            }}
+        >
+            <li className={styles['item']}>
+                {typeof e.icon === 'string' ? <img src={e.icon}></img> : props.icon}
+                <p>
+                    {e.text}
+                </p>
+            </li>
         </Link>);
         return li;
 
@@ -33,7 +41,10 @@ function OperateOption(props) {
                     <span>{props.totalText}</span>
                 </div>
                 <div className={styles['right']}>
-                    {props.link && <Link to={props.link.path}>{props.link.text}</Link>}
+                    {props.link && <Link to={{
+                        pathname: props.link.path,
+                        state: props.link.state
+                    }}>{props.link.text}</Link>}
                 </div>
             </div>
             <ul className={styles['content']}>

@@ -7,27 +7,26 @@ import { message } from 'antd';
 import { noDevelopment } from '../../../_config'
 function L({ staticContext, dispatch, ...props }) {
 
-
+    
     return (
         <ctx.Consumer>
             {value => (
 
                 <a
                     onClick={(e) => {
+                    
                         e.preventDefault();
+
                         if (props.to === noDevelopment) {
                             message.warning('抱歉, 暂未开发');
                             return;
-                        }
-
-                        if (props.logindata === null) {
-                            intercept(e, props, value);
-                        }
-                        else {
+                        } else if (props.logindata === null) {
+                            console.log('fajsoifjoij')
+                            intercept(e, props, location, value);
+                        } else {
+                           
                             props.history.push(props.to);
                         }
-
-
                     }}
                     className={props.location.pathname === props.to ? (props.activeClassName || 'acitve') : ""}
                     href={props.to}

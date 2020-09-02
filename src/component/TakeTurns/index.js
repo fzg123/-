@@ -13,7 +13,7 @@ export default class TakeTurns extends Component {
         height: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,// 容器高度
         timeRequired: propTypes.number,//换一张图片所需时间
         model: propTypes.oneOf(['alternation', 'fadeToggle']), // 轮播的方式
-        waitAutoTime: propTypes.number,
+        waitAutoTime: propTypes.number, // 轮播间隔时间
         flagAuto: propTypes.bool, // 是否自动轮播
         flagMobile: propTypes.bool  // 是否是移动端
     }
@@ -56,10 +56,6 @@ export default class TakeTurns extends Component {
                         this.btnRightRef.current.click();
                     }
                 }
-
-
-
-
                 this.timer = setInterval(this.autoLunBo, this.props.waitAutoTime);
             })
 
@@ -156,7 +152,7 @@ export default class TakeTurns extends Component {
                         howFreight={this.props.howFreight}
 
                     />
-                    {<HandleBtn
+                    {!this.props.flagMobile ? <HandleBtn
                         isShowBtn={this.props.isShowBtn}
                         onChange={this.moveTo}
                         currentImg={this.state.currentImg}
@@ -165,7 +161,7 @@ export default class TakeTurns extends Component {
                         btnRightRef={this.btnRightRef}
                         btnLeftRef={this.btnLeftRef}
 
-                    />}
+                    /> : null}
                     {this.props.imgSrcs.length > 1 &&
                         <Point
 

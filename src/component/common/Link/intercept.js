@@ -1,9 +1,10 @@
-import {intercept} from '../../../_config'
+import { intercept } from '../../../_config'
 export default function (e, props, value) {
-    
-    
+
+
 
     e.preventDefault();
+  
     const bool = intercept.some(e => new RegExp('^' + e).test(props.to));
 
     if (bool) {
@@ -16,5 +17,5 @@ export default function (e, props, value) {
             }
         })
     }
-    else props.history.push(props.to)
+    else props.history.push(props.to);
 }

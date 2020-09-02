@@ -8,12 +8,15 @@ const _config = {
 }
 
 export default function (props) {
+    console.log(props)
     return (
         <>
             <div className={styles["_w"]}></div>
             <div className={styles['header']}>
                 <div className={styles["left"]}
                     onClick={() => {
+                        const selfPath = props.location.state && props.location.state.path;
+
                         let i;
                         let flag;
                         for (let j = 0; j < _config.intercept.length; j++) {
@@ -27,7 +30,10 @@ export default function (props) {
                         if (
                             flag
                         ) {
-                            props.history.push(_config.intercept[i].target);
+                            props.history.push({
+                                pathname: selfPath ? selfPath : _config.intercept[i].target,
+                                state: props.location.state
+                            });
                         } else {
                             props.history.go(-1);
                         }
