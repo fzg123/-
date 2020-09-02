@@ -1,0 +1,27 @@
+#take-turns-btn > div{
+    display: block;
+    width: 25px;
+    height: 35px;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    line-height: 35px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .1);
+    cursor: pointer;
+    box-sizing: border-box;
+    color: white;
+
+}
+#take-turns-btn > div:hover{
+    background-color: rgba(0, 0, 0, .3);
+}
+#take-turns-btn-left{
+    left: 0;
+}
+#take-turns-btn-right{
+    right: 0;
+}
+#take-turns-btn.not-display{
+    visibility: hidden;
+}

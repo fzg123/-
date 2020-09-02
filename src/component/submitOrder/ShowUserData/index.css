@@ -1,0 +1,19 @@
+.show-user-data{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(102,235,190);
+    box-sizing: border-box;
+    padding: 15px;
+    color: white;
+}
+.show-user-data img{
+    width: 22px;
+    height: 20px;
+    margin-right: 5px;
+}
+.user{
+    margin-right: 45px;
+}
+.show-user-data p span:nth-of-type(2) span{
+    margin-right: 5px;
+}

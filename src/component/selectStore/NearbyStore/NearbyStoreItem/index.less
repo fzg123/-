@@ -1,0 +1,32 @@
+@import '../../../../assets/less/common.less';
+
+.nearby-store-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.nearby-store-item:not(:last-child){
+    border-bottom: 1px solid rgb(190, 250, 217);;
+}
+.nearby-store-item .right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right img{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+   
+}
+.left p:nth-of-type(1){
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.right span{
+    color: black;
+    font-size: 13px;
+}

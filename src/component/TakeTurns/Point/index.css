@@ -1,0 +1,26 @@
+#take-turns-point{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    padding: 8px 5px;
+    display: flex;
+    background-color: rgba(255, 255, 255, .5);
+    list-style: none;
+    border-radius: 6px;
+}
+#take-turns-point>li{
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    background-color: rgba(45, 243, 243, .6);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#take-turns-point>li:hover{
+    background-color: rgba(45, 243, 243, 1);
+}
+#take-turns-point>li.active{
+    background-color: rgb(252, 135, 26);
+}

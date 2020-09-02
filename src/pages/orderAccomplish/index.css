@@ -1,0 +1,58 @@
+.order-accomp-list{
+    width: 100%;
+}
+
+.img{
+    width: 100%;
+    height: 175px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img img{
+    width: 55px;
+    height: 65px;
+    margin-bottom: 6px;
+}
+.btn{
+    padding: 10px 0;
+}
+.center span{
+    color: rgb(0,198,130);
+    font-size: 17px;
+    font-weight: 700;
+}
+.btn-center{
+    display: flex;
+    justify-content: center;
+}
+.btn-center div{
+    padding: 5px 14px;
+    font-size: 15px;
+    border-radius: 20px;
+}
+.btn-center div:nth-of-type(1){
+    margin-right: 40px;
+    color: white;
+    background-color: rgb(100,229,201);
+}
+.btn-center div:nth-of-type(2){
+    border: 2px solid rgb(100,229,201);
+}
+.guess-you-like{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.guess-you-like>p{
+    text-align: center;
+    color: rgb(0,198,130);
+    margin: 15px 0;
+}

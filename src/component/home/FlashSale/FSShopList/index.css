@@ -1,0 +1,14 @@
+.shop-list{
+    width: 100%;
+    
+}
+.shop-list > ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.shop-list li{
+
+   display: inline-block;
+}
+

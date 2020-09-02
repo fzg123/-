@@ -1,0 +1,37 @@
+.menu-list{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-list li{
+    text-align: center;
+    flex: 1 1;
+    position: relative;
+    background-color: rgb(94,223,123);
+}
+.menu-list li a{
+    width: 101%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* line-height: 110px; */
+    color: white;
+}
+.menu-list li a.active{
+    background-color: white;
+    color: rgb(94,223,123);
+}
+.menu-list li a.active .line{
+    display: block;
+}
+.line{
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(94,223,123);
+    
+}

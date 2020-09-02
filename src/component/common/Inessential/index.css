@@ -1,0 +1,23 @@
+.inessential{
+    width: 100%;
+    height: 4.0rem;
+    position: relative;
+}
+.inessential .center{
+    /* width: 200rem; */
+    /* position: absolute; */
+    /* top: 0;
+    left: 50%; */
+    /* transform: translateX(-50%); */
+}
+.inessential .center img{
+    width: 4.0rem;
+    height: 2.5rem;
+}
+.line{
+    margin: 0 1.0rem;
+    display: inline-block;
+    height: 2.0rem;
+    border-left: 1px solid rgb(86,183,112);
+    vertical-align: middle;
+}

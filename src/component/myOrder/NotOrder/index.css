@@ -1,0 +1,27 @@
+.not-order{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+.center{
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.center img{
+    width: 100px;
+    height: 100px;
+}
+.not-order P:nth-of-type(1){
+    font-size: 17px;
+    font-weight: 700;
+    color: rgb(97,228,196);
+}
+.not-order P:nth-of-type(2){
+    font-size: 13px;
+    color: rgb(97,228,196);
+}

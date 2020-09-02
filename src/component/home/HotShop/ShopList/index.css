@@ -1,0 +1,12 @@
+.shopList{
+    width: 100%;
+    
+}
+.shopList li{
+    padding: 25px 0;
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+.shopList li:first-child{
+    padding-top: 0;
+    
+}

@@ -1,0 +1,11 @@
+li p .img{
+    width: 5.4rem;
+    height: 5.3rem;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

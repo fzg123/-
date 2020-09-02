@@ -1,0 +1,43 @@
+.top{
+    width: 100%;
+    height: 130px;
+    background-color: rgb(99,230,198);
+    box-sizing: border-box;
+    padding-top: 20px;
+
+}
+.left img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.msg{
+    display: inline-block;
+    vertical-align: top;
+}
+.msg p{
+    margin: 0;
+}
+.msg p:nth-of-type(1){
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+.msg p:nth-of-type(2) span{
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(38,185,140);
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.center{
+    width: calc(100% - 40px);
+    margin: 0 auto;
+}

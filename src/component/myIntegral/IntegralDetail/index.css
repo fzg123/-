@@ -1,0 +1,9 @@
+.integral-detail{
+    width: 100%;
+    height: calc(100% - 217px);
+
+}
+.integral-detail>p{
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(101,231,197);
+}

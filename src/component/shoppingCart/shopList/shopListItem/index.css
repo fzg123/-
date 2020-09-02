@@ -1,0 +1,82 @@
+.shop-list-item{
+    width: 100%;
+    overflow: hidden;
+    height: 120px;
+    padding: 13px 0px 20px 0;
+    box-sizing: content-box;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+.enter{
+    float: left;
+    margin:0  10px; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img{
+    float: left;
+    margin-right: 10px;
+    
+}
+.price-msg{
+    float: left;
+    width: 84px;
+
+}
+.shop-num{
+    float: left;
+}
+.enter img{
+    width: 33px;
+    height: 33px;
+}
+.img img{
+    width: 140px;
+    height: 120px;
+}
+.shop-list-item .name{
+   font-size: 16px;
+   color: black;
+    margin-bottom: 3px;
+}
+.shop-list-item p{
+    margin: 0;
+}
+.shop-list-item .msg{
+    font-size: 12px;
+    color: rgb(63, 63, 63);
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.current-price{
+    font-size: 18px;
+    color:rgb(251,75,86);
+    margin-right: 8px;
+}
+.money{
+    font-size: 14px;
+}
+/* .money{
+    font-size: 14px;
+}
+.cur-money{
+    color: rgb(251,75,86);
+    
+} */
+.prev-price{
+    text-decoration: line-through;
+}
+.shop-num{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   padding-bottom: 25px;
+   box-sizing: border-box;
+   margin-left: 20px;
+}

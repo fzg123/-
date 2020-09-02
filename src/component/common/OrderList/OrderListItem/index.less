@@ -1,0 +1,54 @@
+@mainColor:rgb(7, 104, 76);
+
+.order-list-item{
+    padding: 5px 8px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+}
+.order-list-item:not(:last-child){
+    margin-bottom: 10px;
+}
+.order-list-item .top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.order-list-item .bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.order-list-item .bottom p{
+    vertical-align: bottom;
+}
+.bottom img{
+    width: 40px;
+    height: 40px;
+}
+
+
+.left{
+    color: @mainColor;
+    font-size: 13px;
+}
+.right{
+    color: rgb(249,184,48);
+    font-size: 13px;
+}
+.order-list-item p{
+    margin: 0;
+}
+
+.bottom img{
+    width: 165px;
+    height: 160px;
+}
+.bottom p{
+    align-self: flex-end;
+    color: @mainColor;
+}
+.price{
+    font-weight: 700;
+}

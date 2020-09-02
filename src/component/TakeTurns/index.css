@@ -1,0 +1,5 @@
+.take-turns-container{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}

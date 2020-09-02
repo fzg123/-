@@ -1,0 +1,16 @@
+.shop-list{
+    width: 100%;
+  
+    margin: 0;
+    
+}
+.shop-list li{
+    width: 100%;
+    border-radius: 2rem;
+    background-color: white;
+    
+    
+}
+.shop-list li:not(:last-child){
+    margin-bottom: 10px;
+}

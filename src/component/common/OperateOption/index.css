@@ -1,0 +1,45 @@
+.operate{
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+}
+.header{
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.left{
+    float: left;
+    font-size: 15px;
+    font-weight: 700;
+}
+.right{
+    float: right;
+    
+}
+.right a{
+    color: rgb(165, 165, 165);
+    font-size: 12px;
+}
+.content{
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 0;
+    box-sizing: content-box;
+}
+.content img{
+    width: 30px;
+    height: 28px;
+    
+}
+.operate li {
+    text-align: center;
+}
+.operate li p{
+    font-size: 12px;
+    margin-top: 10px;
+}
+.operate a{
+    color: rgb(127,127,127);
+}

@@ -1,0 +1,16 @@
+.boon{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    background-color: white;
+    margin-bottom: 10px;
+}   
+.boon div{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    padding: 10px 0;
+}
+.boon div:not(:last-child){
+    border-bottom: 1px solid #ccc;
+}

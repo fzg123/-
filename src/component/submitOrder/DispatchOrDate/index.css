@@ -1,0 +1,23 @@
+.dispatch-data{
+    width: 100%;
+    /* height: 80px; */
+    box-sizing: border-box;
+    background-color: white;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+.dispatch-data .item {
+    width: 100%;
+    overflow: hidden;
+    padding: 7px 0;
+    color: rgb(40, 63, 56);
+}
+.dispatch-data .item .left{
+    float: left;
+}
+.dispatch-data .item .right{
+    float: right;
+}
+.dispatch-data .item:not(:last-child){
+    border-bottom: 1px solid #ccc;
+}

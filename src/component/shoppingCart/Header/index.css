@@ -1,0 +1,21 @@
+.header{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left{
+    margin-left: 20px;
+}
+.right{
+    margin-right: 20px;
+}
+.left img{
+    width: 7.9rem;
+    height:3.0rem;
+}
+.right span{
+    color: #ccc;
+}

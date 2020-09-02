@@ -1,0 +1,41 @@
+.address-list-item{
+    width: 100%;
+   
+    overflow: hidden;
+}
+.left{
+    float: left;
+    width: 280px;
+}
+.name{
+    font-size: 17px;
+    color: black;
+    margin-right: 5px;
+}
+.phone{
+    font-size: 14px;
+    color: rgb(135,184,167);
+}
+.address{
+    color: black;
+}
+.default{
+    display: none;
+    color: rgb(251,121,35);
+    padding: 2px;
+    border-radius: 8px;
+    background-color: rgb(247,205,207);
+}
+.d_a.active .default{
+    display: inline;
+}
+.right{
+    float: right;
+   
+    line-height: 63px;
+    color: rgb(135,184,167);
+}
+.right span{
+    padding:1px 10px;
+    border-left: 1px solid rgb(135,184,167);
+}

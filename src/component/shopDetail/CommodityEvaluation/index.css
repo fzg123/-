@@ -1,0 +1,25 @@
+.commodityEvaluation{
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.left span{
+    font-size: 19px;
+    font-weight: 700;
+    color: black;
+}
+.right a{
+    color:black;
+    font-size: 13px;
+}
+.commodityEvaluation header{
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}

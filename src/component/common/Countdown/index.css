@@ -1,0 +1,16 @@
+.countdown{
+    width: 115px;
+
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    color: white;
+}
+.time{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 700;
+}

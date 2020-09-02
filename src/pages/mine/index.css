@@ -1,0 +1,21 @@
+.mine{
+    width: 100%;
+    background-color: rgb(237,250,243);
+    height: 100%;
+    overflow: auto;
+}
+.user-data{
+    height: 400px;
+  width: 100%;  
+  border: 1px solid black;
+}
+.operate-wrapper{
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  height: calc(100% - 212px - 10px);
+  /* margin-bottom: 10px; */
+}
+.operate-wrapper>div:not(:last-child){
+  margin-bottom: 10px;
+}
