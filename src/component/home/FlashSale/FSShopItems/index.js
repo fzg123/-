@@ -4,7 +4,7 @@ import ShopItem from '../FSShopList/ShopItem'
 import { imgSrcRoot } from '@/_config.js'
 import joinImgSrc from '../../../../utils/joinImgSrc'
 export default function FSShopItems(props) {
-    console.log(props)
+    
 
     const shops = props.datas.map((e, i) => {
         let imgSrc = imgSrcRoot + e.fruitImagesUrl;

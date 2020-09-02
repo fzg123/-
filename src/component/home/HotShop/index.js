@@ -13,7 +13,6 @@ export default function HotShop() {
                 shopId: 1,
                 showCount: 3
             });
-            console.log(r)
             setshopDatas(r.data.result);
         }())
         
