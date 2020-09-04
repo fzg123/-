@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import styles from './index.css'
+import styles from './index.less'
 import ShopItem from './ShopItem'
 import TakeTurns from '../../../TakeTurns'
 import FSShopItems from '../FSShopItems'
 import { getXianShiQG } from '@/api'
-
+import Loading from '../../../common/Loading1'
 export default function index(props) {
-    const [shopData, setshopData] = useState([]);
+    const [shopData, setshopData] = useState({
+        data: [],
+        status: 'loading'
+    });
     let total;
     const num = 3; // 每列的数量
     const items = [];
     let index = 1;
-    if (shopData.length !== 0) {
 
-        total = shopData.length;
+    if (shopData.data.length !== 0) {
+
+        total = shopData.data.length;
         while (true) {
             if (total <= 0) {
                 break;
             }
             const item = <FSShopItems
-                datas={shopData.filter((e, i) => (index - 1) * num <= i && i < index * num)}
+                datas={shopData.data.filter((e, i) => (index - 1) * num <= i && i < index * num)}
             />
             items.push(item);
             total -= 3;
@@ -32,7 +36,10 @@ export default function index(props) {
     useEffect(() => {
         (async function () {
             const result = await getXianShiQG();
-            setshopData(result.data.result);
+            setshopData({
+                data: result.data.result,
+                status: 'finish'
+            });
         }())
     }, [])
 
@@ -40,7 +47,7 @@ export default function index(props) {
 
     return (
         <div className={styles['shop-list']}>
-            <TakeTurns
+            {shopData.status === 'finish' ? <TakeTurns
 
                 imgSrcs={items}
                 width={props.TakeTurnsWidth - 40}
@@ -49,6 +56,17 @@ export default function index(props) {
                 flagAuto={true}
                 waitAutoTime={3000}
             />
+                :
+            
+                <div className={styles['center']}>
+                    <Loading/>
+                </div>
+            }
+
+
+
+
+
 
         </div>
 

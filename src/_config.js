@@ -9,11 +9,13 @@ export const intercept = ['/myRedPacket',
     '/myBoon',
     '/addressManage'
 ];
+// 主域名
 
+export const host = 'http://localhost:8888';
 
 // 图片的网络地址主要的前缀
 
-export const imgSrcRoot = 'http://localhost:8888/fruitImages';
+export const imgSrcRoot = host + '/fruitImages';
 
 
 // 没有登录情况下,进入需要登录才能看的页面时,提示框里面显示的内容

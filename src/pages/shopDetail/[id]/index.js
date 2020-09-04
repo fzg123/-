@@ -21,6 +21,7 @@ function ShopDetail(props) {
     const [shopData, setshopData] = useState({});
     useEffect(() => {
         (async function () {
+            props.fetchShopItems(props.loginData.userId); // 更新仓库中 购物车中数据 该页面需要用的此数据
             const result = await getShopDetail(props.match.params.id);
             setshopData({
                 ...shopData,
@@ -45,6 +46,7 @@ function ShopDetail(props) {
                 })
                 if (result.status === 'success') {
                     message.success('添加购物车成功');
+                    props.fetchShopItems(props.loginData.userId);
                 }
             }())
         }
@@ -105,7 +107,7 @@ function ShopDetail(props) {
                         <GoBuy
                             onGoShopCar={() => onGoShopCar(value)}
                             onGoBuy={onGoBuy}
-                            shopNum={2}
+                            shopNum={props.shopCartItem.length}
                             setFlagShowModal={value.setFlagShowModal}
                         ></GoBuy>
                     </div>
@@ -118,9 +120,18 @@ function ShopDetail(props) {
 }
 
 const mapStateToProps = state => ({
-    loginData: state.loginData
+    loginData: state.loginData,
+    shopCartItem: state.shopCartItem
 })
-const r = connect(mapStateToProps)(ShopDetail);
+const mapDispatchToProps = dispatch => ({
+    fetchShopItems(id) {
+        dispatch({
+            type: 'shopCartItem/fetchShopItems',
+            payload: id
+        })
+    }
+})
+const r = connect(mapStateToProps, mapDispatchToProps)(ShopDetail);
 r.title = '商品详情';
 r.wrappers = ['@/router/ShowHeader']
 export default r;

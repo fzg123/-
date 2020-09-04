@@ -1,0 +1,42 @@
+.loading{
+   
+    display: flex;
+
+}
+.loading li{
+    width: 4px;
+    height: 30px;
+    // background-color:rgb(80,179,71);
+    margin: 0 4px;
+    border-radius: 5px;
+    transform: scaleY(1);
+    animation: a .7s linear infinite;
+}
+.loading li:nth-of-type(2){
+    animation-delay: 60ms;
+}
+.loading li:nth-of-type(3){
+    animation-delay: 120ms;
+}
+.loading li:nth-of-type(4){
+    animation-delay: 180ms;
+}
+.loading li:nth-of-type(5){
+    animation-delay: 240ms;
+}
+.loading li:nth-of-type(6){
+    animation-delay: 300ms;
+}
+
+
+@keyframes a{
+    0%{
+        transform: scaleY(1);
+    }
+    50%{
+        transform: scaleY(.6);
+    }
+    100%{
+        transform: scaleY(1);
+    }
+}

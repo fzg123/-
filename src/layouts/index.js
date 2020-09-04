@@ -12,17 +12,16 @@ import { message } from 'antd';
 import useListen from './useListen'
 import qDImg from '../assets/min-img/img/60.png'
 import useTransition from './useTransition'
-import Listen from '../component/common/Listen'
 function Layouts(props) {
-    console.log('重新渲染了')
     const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 为 null 表示不显示蒙层
     const [flagShowActivity, setflagShowactivity] = useState(false); // 是否显示签到页面
-    const arr = ['/shoppingCart', '/mine'];
+    const arr = ['/shoppingCart', '/mine'];  // 不需要使用头部组件的页面
 
     const contentRef = createRef();
     const containerRef = createRef();
     const initOpacity = '.3';
-    useTransition(() => flag, containerRef, contentRef, initOpacity, props);  // 每次渲染页面 都 过度一下透明度 实现淡显效果
+
+    // useTransition(() => flag, containerRef, contentRef, initOpacity, props);  // 每次渲染页面 都 过度一下透明度 实现淡显效果
 
     /**
      * 需要使用到通用布局的页面路径
@@ -44,7 +43,7 @@ function Layouts(props) {
             {flag ? <div
                 ref={containerRef}
                 className={styles.container}
-                style={{ opacity: initOpacity }}
+               
             >
                 {/* 头部 */}
                 {
@@ -73,7 +72,7 @@ function Layouts(props) {
 
                 <div
                     ref={contentRef}
-                    style={{ opacity: initOpacity }}
+                 
                     className={styles.content}
                 >
                     {props.children}

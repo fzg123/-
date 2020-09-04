@@ -31,55 +31,53 @@ function shoppingCart(props) {
     allPrice = allPrice && allPrice.toFixed(2); // 保留两位小数
 
     const notData = <div className={styles['bottom']}><NotData /></div>; // 没有数据要展示的内容
+    const content = (props.shopDatas.length !== 0 ?
+        <>
+            <Header onClick={() => {
+                setflagShowModal(true);
+                let flag = false;
+                const promises = [];  // 得到所有删除商品项的promise  
+                props.shopDatas.forEach(e => {
+                    if (e.shoppingStatus == 1) {
+                        flag = true;
+                        const result = props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
+                        promises.push(result);
+                    }
+                })
+                if (flag) {
+                    Promise.all(promises).then(d => {  // 等待全部删除完成
+                        props.fetchShopItems(props.loginData.userId);  // 刷新购物车
+                        setflagShowModal(false);
+                        message.success('删除成功');
+                    })
+                }
+                /**
+                 * 通知后端删除，并重新发送ajax请求，重新渲染数据
+                 */
+            }}></Header>
+            <ShopList onChange={(newShopData) => {
+                props.setShopitem(newShopData);
+            }} datas={props.shopDatas}></ShopList>
 
+            <div className={styles['footer']}>
+                <Footer
+                    onAllChecked={() => {
+                        const check = isAllChecked ? 0 : 1;
+                        props.setAllShopStatus(check)
+                    }}
+                    onPayTheBill={() => { // 点击了去结算
+
+                    }}
+                    isAllEnter={isAllChecked}
+                    boon={0}
+                    allPrice={allPrice || 0} />
+            </div>
+        </>
+        :
+        notData);
     // 主要的内容页面
     const mainPage = (<div className={styles['shoppingCart']}>
-        {props.shopDatas.length !== 0 ?
-            <>
-                <Header onClick={() => {
-                    setflagShowModal(true);
-                    let flag = false;
-                    const promises = [];  // 得到所有删除商品项的promise  
-                    props.shopDatas.forEach(e => {
-                        if (e.shoppingStatus == 1) {
-                            flag = true;
-                            const result = props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
-                            promises.push(result);
-                        }
-                    })
-                    if (flag) {
-                        Promise.all(promises).then(d => {  // 等待全部删除完成
-                            props.fetchShopItems(props.loginData.userId);  // 刷新购物车
-                            setflagShowModal(false);
-                            message.success('删除成功');
-                        })
-                    }
-                    /**
-                     * 通知后端删除，并重新发送ajax请求，重新渲染数据
-                     */
-                }}></Header>
-                <ShopList onChange={(newShopData) => {
-                    props.setShopitem(newShopData);
-                }} datas={props.shopDatas}></ShopList>
-
-                <div className={styles['footer']}>
-                    <Footer
-                        onAllChecked={() => {
-                            const check = isAllChecked ? 0 : 1;
-                            props.setAllShopStatus(check)
-                        }}
-                        onPayTheBill={() => { // 点击了去结算
-
-                        }}
-                        isAllEnter={isAllChecked}
-                        boon={0}
-                        allPrice={allPrice || 0} />
-                </div>
-            </>
-            :
-            notData
-        }
-        {flagShowModal ? <Loading /> : null}
+        {flagShowModal ? <Loading /> : content}
 
     </div>);
 
