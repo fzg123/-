@@ -24,9 +24,15 @@
 }
 .content{
     display: flex;
-    justify-content: space-around;
-    padding: 25px 0;
+    flex-direction: column;
+    padding: 25px 0 10px 0;
     box-sizing: content-box;
+}
+.content>ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
 }
 .content img{
     width: 30px;

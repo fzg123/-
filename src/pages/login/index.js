@@ -13,7 +13,7 @@ function Login(props) {
 
     // if (props.loginData !== null) props.history.push('/');
     const onLogin = async () => {
-        const { state, msg } = check(userName, pwd);
+        const { state, msg } = check(userName, pwd); // 检验是否合法 格式是否满足条件 如何全部通过 返回true
         if (!state) {
             message.warning(msg);
             return;
@@ -22,17 +22,18 @@ function Login(props) {
             userName,
             passWord: pwd
         })
-        console.log(r)
         if (r.status === 'fail') {
-            console.log('fasdjfoiasdjfioj')
+
             message.warning('账号或者密码错误');
         }
         else if (r.status === "success") {
             message.success('登录成功, 欢迎您');
-            props.onLogin(r.data.result)
+
             /**
-             * 把用户信息存入仓库
-             */
+                        * 把用户信息存入仓库
+                        */
+
+            props.onLogin(r.data.result, props)
 
         }
     }
@@ -73,13 +74,14 @@ function Login(props) {
 
 const mapDispatchToProps = dispatch => ({
 
-    onLogin(userId) {
+    onLogin(userId, props) {
         dispatch({
             type: 'loginData/changeState',
             payload: userId
         })
         window.localStorage.setItem('userId', JSON.stringify(userId));
-        dispatch(routerRedux.push('/'))
+        const path = props.location.state && props.location.state.path;
+        dispatch(routerRedux.push(path != undefined ? path : '/'))
     }
 
 })

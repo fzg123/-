@@ -1,23 +1,29 @@
 import React,{useEffect,useState} from 'react'
 import ShopList from './ShopList'
-import styles from './index.css'
+import styles from './index.less'
 import Center from '../../common/Center'
 import { createRef } from 'react'
 import {getAllHotShop} from '../../../api'
-
+import Loading from '../../common/Loading'
 export default function HotShop() {
-    const [shopDatas, setshopDatas] = useState([])
+    const [shopDatas, setshopDatas] = useState({
+        data: [],
+        loading: true // 加载状态
+    })
     useEffect(()=>{
         (async function(){
             const r = await getAllHotShop({
                 shopId: 1,
                 showCount: 3
             });
-            setshopDatas(r.data.result);
+            setshopDatas({
+                data: r.data.result,
+                loading: false
+            });
         }())
         
     }, [])
-   
+    
     
     return (
       
@@ -26,7 +32,11 @@ export default function HotShop() {
                 门店热销
                 
             </h2>
-            <ShopList shopDatas={shopDatas}/>
+            <div className={styles["content"]}>
+                {shopDatas.loading ? <Loading></Loading> : <ShopList shopDatas={shopDatas.data}/>}
+            </div>
+            
+            
         </div>
 
        

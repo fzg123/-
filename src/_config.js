@@ -6,11 +6,28 @@ export const intercept = ['/myRedPacket',
     '/integralMall',
     '/myOrder',
     '/recharge',
-    '/shopDetail',
-    '/myBoon'
+    '/myBoon',
+    '/addressManage'
 ];
 
 
-// 图片的网络地址前缀
+// 图片的网络地址主要的前缀
 
 export const imgSrcRoot = 'http://localhost:8888/fruitImages';
+
+
+// 没有登录情况下,进入需要登录才能看的页面时,提示框里面显示的内容
+export const notLoginShowData = (props, state, ctx) => {
+    return {
+        title: '提示',
+        children: '您还没有登录，是否跳转到登录页面',
+        afterEnterCallback: () => {
+            props.history.push({
+                pathname: '/login',
+                state
+            });
+            ctx.setFlagShowModal(null);  // 同时关掉蒙层
+        }
+    }
+}
+

@@ -12,7 +12,7 @@ export default function index(props) {
     const items = [];
     let index = 1;
     if (shopData.length !== 0) {
-       
+
         total = shopData.length;
         while (true) {
             if (total <= 0) {
@@ -23,18 +23,17 @@ export default function index(props) {
             />
             items.push(item);
             total -= 3;
-            index ++;
+            index++;
         }
-       
+
         index++;
     }
- 
+
     useEffect(() => {
         (async function () {
             const result = await getXianShiQG();
             setshopData(result.data.result);
         }())
-
     }, [])
 
 

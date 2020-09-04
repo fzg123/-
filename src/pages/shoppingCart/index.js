@@ -8,7 +8,7 @@ import NotData from '../../component/common/NotData'
 import { connect } from 'dva'
 import Loading from '../../component/common/Loading'
 import Link from '../../component/common/Link'
-import { getAllShop } from '../../api'
+import { message } from 'antd'
 function shoppingCart(props) {
     const [flagShowModal, setflagShowModal] = useState(true)
     const isAllChecked = props.shopDatas.every(e => e.shoppingStatus === 1);
@@ -27,24 +27,33 @@ function shoppingCart(props) {
         if (e.shoppingStatus != 1) return;
         allPrice += (e.shoppingCount * e.fruit.fruitInventedPrice)
     })
-     
-    allPrice = allPrice && allPrice.toFixed(2); // 保留两位小数
-    
-    const notData = <div className={styles['bottom']}><NotData /></div>;
 
-    // 修改商品项  先缓存起来  等到页面离开时  再统一发送ajax请求 
+    allPrice = allPrice && allPrice.toFixed(2); // 保留两位小数
+
+    const notData = <div className={styles['bottom']}><NotData /></div>; // 没有数据要展示的内容
+
+    // 主要的内容页面
     const mainPage = (<div className={styles['shoppingCart']}>
         {props.shopDatas.length !== 0 ?
             <>
                 <Header onClick={() => {
+                    setflagShowModal(true);
                     let flag = false;
+                    const promises = [];  // 得到所有删除商品项的promise  
                     props.shopDatas.forEach(e => {
                         if (e.shoppingStatus == 1) {
                             flag = true;
-                            props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
+                            const result = props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
+                            promises.push(result);
                         }
                     })
-                    if (flag) props.fetchShopItems(props.loginData.userId);  // 刷新购物车
+                    if (flag) {
+                        Promise.all(promises).then(d => {  // 等待全部删除完成
+                            props.fetchShopItems(props.loginData.userId);  // 刷新购物车
+                            setflagShowModal(false);
+                            message.success('删除成功');
+                        })
+                    }
                     /**
                      * 通知后端删除，并重新发送ajax请求，重新渲染数据
                      */
@@ -70,7 +79,7 @@ function shoppingCart(props) {
             :
             notData
         }
-        {flagShowModal ? <div className={styles['loading']}><Loading /></div> : null}
+        {flagShowModal ? <Loading /> : null}
 
     </div>);
 
@@ -103,7 +112,7 @@ const mapDispatchToProps = dispatch => ({
         })
     },
     fetchRemoveShopItem(id) {
-        dispatch({
+        return dispatch({
             type: 'shopCartItem/fetchRemoveShopItem',
             payload: id
         })

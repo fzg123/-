@@ -62,6 +62,10 @@ export default {
                 icon: pj,
                 text: '我的评价',
                 path: '/noDevelopment'
+            }, {
+                icon: pj,
+                text: '收货地址管理',
+                path: '/addressManage'
             }
         ],
         totalText: '我的服务',

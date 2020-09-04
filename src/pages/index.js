@@ -9,29 +9,24 @@ import HopShop from '@/component/home/HotShop'
 import Inessential from '../component/common/Inessential'
 import Center from '../component/common/Center'
 import { connect } from 'dva'
+import Loading from '../component/common/Loading'
 function Home(props) {
   const [imgSrcs, setImgSrcs] = useState([`https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js`, 'https://dummyimage.com/1030x298', 'https://dummyimage.com/1030x298'])
   const [TakeTurnsWidth, setTakeTurnsWidth] = useState(0);
   const primaryRef = createRef();
+  const [loading, setloading] = useState(false); // 加载状态
   useEffect(() => {
-
-    window.onresize = () => {
-      if (primaryRef.current != null) {
-        setTakeTurnsWidth(primaryRef.current.offsetWidth);
-      }
-
-    }
-    setTakeTurnsWidth(primaryRef.current.offsetWidth);
-    return () => {
-      window.onresize = null;
+    if (primaryRef.current != null) {  // 给轮播图容器定宽
+      setTakeTurnsWidth(primaryRef.current.offsetWidth);
     }
   }, [])
 
   return (
+
     <>
 
       <div ref={primaryRef} className={styles.primary}>
-
+   
 
         <TakeTurns
           imgSrcs={imgSrcs}
@@ -48,9 +43,9 @@ function Home(props) {
 
         <HopShop />
         <Inessential />
-
-
       </div>
+
+
     </>
   );
 }

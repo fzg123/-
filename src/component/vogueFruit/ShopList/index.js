@@ -1,48 +1,23 @@
 import React from 'react'
 import styles from './index.less'
 import ShopItem from './ShopItem'
+import joinImgSrc from '../../../utils/joinImgSrc'
 export default function ShopList(props) {
-
+    const items = props.shopDatas.map((e, i) => {
+        const imgSrc = joinImgSrc(e.fruitImagesUrl, e.fruitImagesCount != 1);
+        return <ShopItem
+            key={i}
+            imgSrc={imgSrc}
+            name={e.fruitName}
+            type={['折扣', '满减']}
+            price={{ currPrice: e.fruitPrice, prevPrice: e.fruitInventedPrice }}
+            id={e.fruitId}
+        ></ShopItem>
+    })
     return (
         <ul className={styles['shop-list']}>
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
-
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
-
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
-            <ShopItem
-                imgSrc={'https://dummyimage.com/130x130/50B347/FFF&text=Mock.js'}
-                name='红心火龙果+凤梨双排的水果'
-                type={['折扣', '满减']}
-                price={{ currPrice: 25, prevPrice: 29.9 }}
-            ></ShopItem>
+            
+            {items}
         </ul>
     )
 }

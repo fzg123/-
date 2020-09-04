@@ -4,7 +4,7 @@ import MenuList from '../../component/vogueFruit/MenuList'
 import { Redirect } from 'umi'
 export default function index(props) {
     if (props.location.pathname === '/vogueFruit') {
-        return <Redirect to='/vogueFruit/1'></Redirect>
+        return <Redirect to='/vogueFruit/selectCut'></Redirect>
     }
     return (
         <div className={styles['vogue-fruit']}>

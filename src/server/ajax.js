@@ -13,6 +13,7 @@ export default function ajax({ type = 'get', url, data = {} } = {}) {
         searchStr += e + '=' + data[e] + temp;
     })
     if (type === 'get') {
+        if (Object.keys(data).length === 0) return axios[type](url);
         return axios[type](url + searchStr)
     }
     else if (type === 'post') {

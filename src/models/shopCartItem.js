@@ -73,7 +73,7 @@ export default {
 
         },
         *fetchRemoveShopItem({ payload }, { call,put }) { // 删除某一个商品
-            yield call(deleteShop, payload);
+            return yield call(deleteShop, payload);
         }
     },
     subscriptions: {

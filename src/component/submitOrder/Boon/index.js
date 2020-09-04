@@ -4,12 +4,13 @@ import Link from '../../common/Link'
 import {
     RightOutlined
 } from '@ant-design/icons';
+import { connect } from 'dva'
 /**
  *  integral
  * @param {*} props 
  */
-export default function Boon(props) {
-    
+function Boon(props) {
+
     return (
         <div className={styles['boon']}>
             <Link to={props.path.integral}>
@@ -24,7 +25,12 @@ export default function Boon(props) {
                     path: '/shoppingCart'
                 }
             }} target='/'>
-                <div className="dikou">
+                <div onClick={()=>{
+                    props.setTargetPath({
+                        key: '/myBoon',
+                        value: '/submitOrder'
+                    })
+                }} className="dikou">
                     <span>优惠卷</span>
                     <span>暂无可用优惠卷<RightOutlined /></span>
                 </div>
@@ -33,3 +39,13 @@ export default function Boon(props) {
         </div>
     )
 }
+const mapDispatchToProps = dispatch => ({
+    setTargetPath(obj) {
+        dispatch({
+            type: 'quitTargetPath/setTargetPath',
+            payload: obj
+        })
+    }
+})
+
+export default connect(null, mapDispatchToProps)(Boon);

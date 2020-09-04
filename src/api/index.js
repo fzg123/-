@@ -91,3 +91,27 @@ export const getShopDetail = async (id) => (await ajax({ url: '/api/fruitgoods/s
 
 export const addShopCart = async (data) => (await ajax({ url: '/api/shopping/addShopping', data })).data;
 
+
+// ---------------------------------------------------------------------
+/**
+ * 收获地址
+ */
+
+// 获取某个用户所有地址api
+export const getAllUserAddress = async (userId) => (await ajax({ url: '/api/address/selectUserAddress?userId=' + userId })).data;
+
+/**
+ * 
+ * 获取用户订单接口
+ */
+export const getMyOrder = async (id) => (await ajax({ url: '/api/order/selectAllUserOrder?userId=' + id })).data;
+
+/**
+ * 时令水果页面接口
+ */
+
+export const getFruitgoods = async (type) => (await ajax({ url: '/api/fruitgoods/' + type })).data;
+// 得到类型为店长推荐的商品
+export const getManagerFruitgoods = async (id) => (await ajax({ url: '/api/fruitgoods/selectRecommend?shop_id=' + id })).data;
+
+

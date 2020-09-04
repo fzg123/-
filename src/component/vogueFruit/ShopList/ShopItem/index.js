@@ -1,26 +1,56 @@
 import React from 'react'
 import styles from './index.less'
-export default function ShopItem(props) {
+import { message } from 'antd'
+import { addShopCart } from '../../../../api'
+import { connect } from 'dva'
+import Link from '../../../common/Link'
+function ShopItem(props) {
     return (
         <li className={styles['shop-item']}>
-            <div className={styles.left}>
-                <img src={props.imgSrc} alt="" />
-            </div>
-            <div className={styles.right}>
+            <Link to={'/shopDetail/' + props.id}>
+                <div className={styles.left}>
+                    <img src={props.imgSrc} alt="" />
+                </div>
+                <div className={styles.right}>
 
-                <p className={styles.name}>
-                    {props.name}
-                </p>
-                <p className={styles.type}>
+                    <p className={styles.name}>
+                        {props.name}
+                    </p>
+                    <p className={styles.type}>
 
-                    {props.type.map((e, i) => (<span key={i}>{e}</span>))}
-                </p>
-                <p className={styles['price']}>
-                    <span className={styles['current-price']}><span className={styles.moeeny}>￥</span>{props.price.currPrice}</span>
-                    <span className={styles['prev-price']}>{props.price.prevPrice}</span>
-                </p>
-            </div>
-            <div className={styles['go-shop']}></div>
+                        {props.type.map((e, i) => (<span key={i}>{e}</span>))}
+                    </p>
+                    <p className={styles['price']}>
+                        <span className={styles['current-price']}><span className={styles.moeeny}>￥</span>{props.price.currPrice}</span>
+                        <span className={styles['prev-price']}>{props.price.prevPrice}</span>
+                    </p>
+                </div>
+
+                <div
+                    className={styles['go-shop']}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        (async function () {
+                            const result = await addShopCart({
+                                fruitId: props.id,
+                                userId: props.loginData.userId,
+                                count: 1
+                            })
+                            if (result.status === 'success') {
+                                message.success('添加购物车成功');
+                            }
+                        }())
+                    }}
+                ></div>
+
+
+            </Link>
+
         </li>
     )
 }
+const mapStateToProps = state => ({
+    loginData: state.loginData
+})
+export default connect(mapStateToProps)(ShopItem);

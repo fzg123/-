@@ -5,7 +5,7 @@ export default function NotData(props) {
     const style = props.color ? { color: props.color } : {};
     return (
         <div className={styles['not-data']}>
-            <p style={style}>没有数据哟~</p>
+            <p style={style}>{props.text || '没有数据哟~'}</p>
             <img src={img} alt="" />
         </div>
     )

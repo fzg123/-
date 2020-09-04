@@ -7,9 +7,7 @@ export default function index(props) {
 
         <ul className={styles['shop-list']}>
 
-            <ShopListItem />
-            <ShopListItem />
-            <ShopListItem />
+            {lis}
         </ul>
 
 

@@ -32,7 +32,7 @@ export default function Menu(props) {
 
                 </li>
                 <li>
-                    <MenuItem path='/vogueFruit/1' exact text='时令水果' icon={{
+                    <MenuItem path='/vogueFruit' exact text='时令水果' icon={{
                         def: s,
                         active: _s
                     }} active={/^\/vogueFruit/.test(props.location.pathname)} />

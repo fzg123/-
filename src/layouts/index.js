@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import styles from './index.css'
 import Menu from '../component/menu'
 import Header from '../component/common/containers/Header'
@@ -7,55 +7,80 @@ import Modal from '../component/common/Modal'
 import ctx from './context'
 import Mask from '../component/common/Mask'
 import DisplayInform from '../component/common/DisplayInform'
-
+import { specific } from '../router/ShowHeader'
 import { message } from 'antd';
-
+import useListen from './useListen'
 import qDImg from '../assets/min-img/img/60.png'
-let unblock;
+import useTransition from './useTransition'
+import Listen from '../component/common/Listen'
 function Layouts(props) {
+    console.log('重新渲染了')
     const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 为 null 表示不显示蒙层
-    const [flagShowActivity, setflagShowactivity] = useState(false)
-    const arr = ['/shoppingCart', '/mine']
+    const [flagShowActivity, setflagShowactivity] = useState(false); // 是否显示签到页面
+    const arr = ['/shoppingCart', '/mine'];
 
-   
+    const contentRef = createRef();
+    const containerRef = createRef();
+    const initOpacity = '.3';
+    useTransition(() => flag, containerRef, contentRef, initOpacity, props);  // 每次渲染页面 都 过度一下透明度 实现淡显效果
+
     /**
-     * 需要使用到通用布局的页面
+     * 需要使用到通用布局的页面路径
      */
-    const needShowNav = ['/', '/getIntoBuy', '/vogueFruit/\\d+', '/shoppingCart', '/mine']
-    if (!needShowNav.some(e => new RegExp('^' + e + '$').test(props.location.pathname))) {
-        return props.children;
-    }
-
-
+    const needShowNav = ['/', '/getIntoBuy', '/vogueFruit/\\w+', '/shoppingCart', '/mine']
+    const flag = needShowNav.some(e => new RegExp('^' + e + '$').test(props.location.pathname));
     return (
+
         <ctx.Provider
             value={{
                 flagShowModal: flagShowHintModal,
-                setFlagShowModal: (obj) => {
+                setFlagShowModal: (obj) => { // 控制显示或者隐藏 提示的窗口
                     setFlagShowHintModal(obj);
                 },
-                setflagShowactivity
+                setflagShowactivity  // 控制 显示或者隐藏  签到窗口
             }}
         >
-            <div className={styles.container} >
-
+            {/* 判断是否需要通用布局组件 */}
+            {flag ? <div
+                ref={containerRef}
+                className={styles.container}
+                style={{ opacity: initOpacity }}
+            >
+                {/* 头部 */}
                 {
-                    !arr.includes(props.location.pathname) ?
-                        (<Header />)
-                        : ''
-
+                    !arr.includes(props.location.pathname) ? (<Header />) : ''
                 }
 
-                <div className={styles.content}>
+
+
+                {/* 内容区 */}
+                <div
+                    ref={contentRef}
+
+                    className={styles.content}
+                >
                     {props.children}
                 </div>
 
 
+                {/* 脚部 */}
                 <div className={styles.footer}>
                     <Menu location={props.location}></Menu>
                 </div>
 
             </div>
+                :
+
+                <div
+                    ref={contentRef}
+                    style={{ opacity: initOpacity }}
+                    className={styles.content}
+                >
+                    {props.children}
+                </div>
+            }
+
+
             {/* 没有登录情况下，提示用的对话框 */}
             <Modal
                 afterCancelCallback={() => setFlagShowHintModal(false)}
@@ -76,14 +101,16 @@ function Layouts(props) {
                     <img
                         style={{ width: '100%', height: '100%' }}
                         src={qDImg}
-                        onClick={()=>{
+                        onClick={() => {
                             setflagShowactivity(false);
                             message.success('签到成功');
                         }}
                     />
                 </DisplayInform>
             </Mask>
+
         </ctx.Provider>
+
 
 
     )
@@ -91,5 +118,7 @@ function Layouts(props) {
 const mapStateToProps = state => ({
     loginData: state.loginData
 })
+const mapDispatchToProps = dispatch => ({
 
-export default connect(mapStateToProps)(Layouts);
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Layouts);

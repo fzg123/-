@@ -26,7 +26,9 @@ export default function Modal(props) {
         }
     }
     // console.log(object)
-    return (props.isShow ? (<Mask>
+    return (props.isShow ? (<Mask
+        bgColor='rgba(0,0,0,.75)'
+    >
         <div className={styles['modal']}>
             <header style={{ backgroundColor: types[props.type].headerBgColor }}>
                 {props.title ? props.title : types[props.type].title}
@@ -56,5 +58,5 @@ export default function Modal(props) {
             </footer>
         </div>
     </Mask>) : null)
-    
+
 }
