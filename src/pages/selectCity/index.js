@@ -4,10 +4,11 @@ import styles from './index.less'
 import Step from '../../component/selectCity/Step'
 import City from '../../component/selectCity/Citys'
 import AllCity from '../../component/selectCity/AllCity'
+import { connect } from 'dva'
 /**
  * 选择城市
  */
-function SelectCity() {
+function SelectCity(props) {
     const [city, setcity] = useState({
         hotCity: [],
         allCity: {}
@@ -22,14 +23,28 @@ function SelectCity() {
             })
         })
     }, [])
+    const clickHandle = (cityData) => {  // 
+        props.setCity(cityData);
+        props.history.push('/details');
+    }
     return (
         <div className={styles['select-city']}>
-            <City color={'#3190e8'} text='热门城市' datas={city.hotCity} />
-            <AllCity datas={city.allCity} />
+            <City onClick={clickHandle} color={'#3190e8'} text='热门城市' datas={city.hotCity} />
+            <AllCity onClick={clickHandle} datas={city.allCity} />
             <Step datas={city.allCity} />
         </div>
     )
 }
-SelectCity.wrappers = ['@/router/ShowHeader'];
-SelectCity.title = '选择城市';
-export default SelectCity;
+const mapDispatchToProps = dispatch => ({
+    setCity(cityData) {
+        dispatch({
+            type: 'selectCity/setCity',
+            payload: cityData
+        })
+    }
+})
+const r = connect(null, mapDispatchToProps)(SelectCity);
+r.wrappers = ['@/router/ShowHeader'];
+r.title = '选择城市';
+
+export default r;

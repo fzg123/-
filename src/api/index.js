@@ -121,7 +121,6 @@ export const getManagerFruitgoods = async (id) => (await ajax({ url: host + '/ap
  */
 export const getHotCity = async () => (await ajax({ url: 'http://cangdu.org:8001/v1/cities?type=hot' })).data;
 export const getAllCity = async () => (await ajax({ url: 'http://cangdu.org:8001/v1/cities?type=group' })).data;
-// http://localhost:8003/v1/cities?type=hot  获取热门城市
-//http://localhost:8003/v1/cities?type=group 获取所有的城市
+export const searchAddress = async ({ key, id }) => (await ajax({ url: `http://cangdu.org:8001/v1/pois?type=search&city_id=${id}&keyword=${key}` })).data;
 
 

@@ -1,7 +1,8 @@
-import styles from './index.css'
+import styles from './index.less'
 import {
     LeftOutlined
 } from '@ant-design/icons';
+
 import { connect } from 'dva'
 const _config = {
     intercept: [

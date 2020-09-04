@@ -3,12 +3,12 @@ import styles from './index.less'
 import CityItem from '../CityItem'
 export default function City({ datas, ...props }) {
     const lis = datas.map((e, i) => {
-        
+
         return <CityItem
             className={i % 4 == 0 ? styles['view-end'] : ''}
             key={e.id}
             {...e}
-            
+            onClick={props.onClick}
         />
     })
     return (
