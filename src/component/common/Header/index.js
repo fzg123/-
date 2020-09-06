@@ -13,28 +13,22 @@ import {
 } from '@ant-design/icons';
 function Header(props) {
     const { loginData } = props;
-   
+
     return (
         <header className={styles.header}>
             <div className={styles.left}>
                 <Link to='/'><img src={logo} alt="" /></Link>
-                {loginData !== null ?
-                    (<div onClick={() => {
-                        props.history.push('/selectCity')
-                    }} className={styles.address}>
-                        <h3>
-                            {props.address == null ? '点此去选择地址' : props.address.name}
-                        </h3>
-                        <RightOutlined />
-                    </div>)
-                    :
-                    (<div className={styles.os}>
-                        <span>
-                            您暂未登录，请先<Link to="/login">登录</Link>或<Link to="/enroll">注册</Link>
-                        </span>
 
-                    </div>)
-                }
+                    <div onClick={() => {
+                    props.history.push('/selectCity')
+                }} className={styles.address}>
+                    <h3>
+                        {props.address == null ? '点此去选择地址' : props.address.name}
+                    </h3>
+                    <RightOutlined />
+                </div>
+
+
 
             </div>
             <div className={styles.right}>
