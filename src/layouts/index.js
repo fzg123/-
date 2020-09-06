@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react'
+import React, { useState } from 'react'
 import styles from './index.css'
 import Menu from '../component/menu'
 import Header from '../component/common/containers/Header'
@@ -7,27 +7,23 @@ import Modal from '../component/common/Modal'
 import ctx from './context'
 import Mask from '../component/common/Mask'
 import DisplayInform from '../component/common/DisplayInform'
-import { specific } from '../router/ShowHeader'
 import { message } from 'antd';
-import useListen from './useListen'
 import qDImg from '../assets/min-img/img/60.png'
-import useTransition from './useTransition'
 function Layouts(props) {
+    console.log('重新渲染了');
     const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 为 null 表示不显示蒙层
     const [flagShowActivity, setflagShowactivity] = useState(false); // 是否显示签到页面
     const arr = ['/shoppingCart', '/mine'];  // 不需要使用头部组件的页面
-
-    const contentRef = createRef();
-    const containerRef = createRef();
-    const initOpacity = '.3';
-
-    // useTransition(() => flag, containerRef, contentRef, initOpacity, props);  // 每次渲染页面 都 过度一下透明度 实现淡显效果
-
     /**
      * 需要使用到通用布局的页面路径
      */
     const needShowNav = ['/', '/getIntoBuy', '/vogueFruit/\\w+', '/shoppingCart', '/mine']
+    if (props.address === null && props.location.pathname != '/details' &&props.location.pathname != '/selectCity') {
+    
+        props.history.push('/selectCity'); // 如果还没有选择地区就进入首页的话  就重定向至选择城市页面
+    }
     const flag = needShowNav.some(e => new RegExp('^' + e + '$').test(props.location.pathname));
+
     return (
 
         <ctx.Provider
@@ -41,20 +37,17 @@ function Layouts(props) {
         >
             {/* 判断是否需要通用布局组件 */}
             {flag ? <div
-                ref={containerRef}
+
                 className={styles.container}
-               
+
             >
                 {/* 头部 */}
                 {
                     !arr.includes(props.location.pathname) ? (<Header />) : ''
                 }
-
-
-
                 {/* 内容区 */}
                 <div
-                    ref={contentRef}
+
 
                     className={styles.content}
                 >
@@ -71,8 +64,8 @@ function Layouts(props) {
                 :
 
                 <div
-                    ref={contentRef}
-                 
+
+
                     className={styles.content}
                 >
                     {props.children}
@@ -115,7 +108,8 @@ function Layouts(props) {
     )
 }
 const mapStateToProps = state => ({
-    loginData: state.loginData
+    loginData: state.loginData,
+    address: state.selectAddress
 })
 const mapDispatchToProps = dispatch => ({
 

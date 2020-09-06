@@ -26,7 +26,7 @@ function AddressManage(props) {
         <div className={styles['address-manage']}>
             <div className={styles["header"]}>
                 <div className={styles["right"]}>
-                    <Link to="/">新增地址</Link>
+                    <Link to={props.location.pathname + '/addAddress'}>新增地址</Link>
                 </div>
             </div>
             <div className="content">
@@ -39,7 +39,6 @@ function AddressManage(props) {
                             addressDatas={addressDatas}
                         />
                 }
-
             </div>
         </div>
     )

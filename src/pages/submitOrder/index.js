@@ -12,14 +12,12 @@ import { getAllShop } from '@/api'
 import Loading from '../../component/common/Loading'
 function SubmitOrder(props) {
     const [shopDatas, setshopDatas] = useState([]);
-    const [address, setaddress] = useState(0);
-
     useEffect(() => {
         (async function () {
             const shopItems = (await getAllShop(props.loginData.userId)).data.result;
             let r = getActiveShopItem(shopItems);
 
-            r = r.map(e => ({
+            r = r.map(e => ({  // 由于组件内使用的属性名跟从服务器得到的不一致  所有转换一下
                 imgSrc: joinImgSrc(e.fruit.fruitImagesUrl, e.fruit.fruitImagesCount > 1),
                 name: e.fruit.fruitName,
                 msg: e.fruit.fruitText,

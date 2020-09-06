@@ -5,34 +5,51 @@ import Step from '../../component/selectCity/Step'
 import City from '../../component/selectCity/Citys'
 import AllCity from '../../component/selectCity/AllCity'
 import { connect } from 'dva'
+import Loading from '../../component/common/Loading'
 /**
  * 选择城市
  */
 function SelectCity(props) {
     const [city, setcity] = useState({
-        hotCity: [],
-        allCity: {}
+        data: {
+            hotCity: [],
+            allCity: {}
+        },
+        status: 'loading'
     })
     useEffect(() => {
         const hotCity = getHotCity();
         const allCity = getAllCity();
         Promise.all([hotCity, allCity]).then(d => {
             setcity({
-                hotCity: d[0],
-                allCity: d[1]
+                data: {
+                    hotCity: d[0],
+                    allCity: d[1]
+                },
+                status: 'idle'
             })
         })
     }, [])
     const clickHandle = (cityData) => {  // 
+
         props.setCity(cityData);
         props.history.push('/details');
+
+
     }
     return (
-        <div className={styles['select-city']}>
-            <City onClick={clickHandle} color={'#3190e8'} text='热门城市' datas={city.hotCity} />
-            <AllCity onClick={clickHandle} datas={city.allCity} />
-            <Step datas={city.allCity} />
-        </div>
+        <>
+            {city.status === 'loading' ?
+                <Loading />
+                :
+                <div className={styles['select-city']}>
+                    <City onClick={clickHandle} color={'#3190e8'} text='热门城市' datas={city.data.hotCity} />
+                    <AllCity onClick={clickHandle} datas={city.data.allCity} />
+                    <Step datas={city.data.allCity} />
+                </div>
+            }
+        </>
+
     )
 }
 const mapDispatchToProps = dispatch => ({

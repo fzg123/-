@@ -114,7 +114,14 @@ export const getFruitgoods = async (type) => (await ajax({ url: host + '/api/fru
 // 得到类型为店长推荐的商品
 export const getManagerFruitgoods = async (id) => (await ajax({ url: host + '/api/fruitgoods/selectRecommend?shop_id=' + id })).data;
 
+/**
+ * 收获地址
+ */
+// 获取默认收获地址
+export const getDefaultHarvestAddress = async (id) => (await ajax({ url: host + '/api/address/selectUserDefaultAddress?userId=' + id })).data;
 
+// 添加一个地址
+export const addAddress = async (data) => (await ajax({ url: host + '/api/address/insertAddress', data })).data;
 /**
  * 
  * 城市

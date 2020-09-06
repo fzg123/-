@@ -9,6 +9,7 @@ import HopShop from '@/component/home/HotShop'
 import Inessential from '../component/common/Inessential'
 import { connect } from 'dva'
 function Home(props) {
+  
   const [imgSrcs, setImgSrcs] = useState([`https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js`, 'https://dummyimage.com/1030x298', 'https://dummyimage.com/1030x298'])
   const [TakeTurnsWidth, setTakeTurnsWidth] = useState(0);
   const primaryRef = createRef();
@@ -18,14 +19,13 @@ function Home(props) {
       setTakeTurnsWidth(primaryRef.current.offsetWidth);
     }
   }, [])
-
   return (
 
     <>
 
       <div ref={primaryRef} className={styles.primary}>
 
-        
+
         <TakeTurns
           imgSrcs={imgSrcs}
           imgHrefs={['/', '/', '/']}
@@ -48,5 +48,11 @@ function Home(props) {
   );
 }
 
+const mapStateToProps = state => ({
+  loginData: state.loginData,
+  address: state.selectAddress
+})
+const mapDispatchToProps = dispatch => ({
 
-export default connect(state => ({ loginData: state.loginData }))(Home);
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

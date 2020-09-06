@@ -14,6 +14,9 @@
 .user{
     margin-right: 45px;
 }
+.show-user-data P:first-child{
+    margin-bottom: 12px;
+}
 .show-user-data p span:nth-of-type(2) span{
     margin-right: 5px;
 }
