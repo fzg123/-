@@ -1,8 +1,8 @@
 import styles from './index.css'
 import { AppstoreAddOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from '../../../common/Link'
-export default function (props) {
-    return (
+export default function (props) { 
+    return ( 
         <div className={styles['top']}>
             <div className={styles['center']}>
                 <div className={styles['left']}>

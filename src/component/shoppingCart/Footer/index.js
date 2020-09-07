@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './index.css'
 import enter from '@/assets/min-img/img/17.png'
 import notEnter from '@/assets/min-img/img/7.png'
-import {Link} from 'umi'
+import { Link } from 'umi'
 
 export default function Footer(props) {
 
@@ -11,7 +11,7 @@ export default function Footer(props) {
             <div className={styles['msg']}>
                 <div className={styles['left']}>
                     <img onClick={() => {
-                        props.onAllChecked&&props.onAllChecked();
+                        props.onAllChecked && props.onAllChecked();
                     }} src={props.isAllEnter ? enter : notEnter} alt="" />
                     <span>全选</span>
                 </div>
@@ -28,9 +28,9 @@ export default function Footer(props) {
                 </div>
             </div>
             <div onClick={() => {
-                props.onPayTheBill&&props.onPayTheBill();
+                props.onPayTheBill && props.onPayTheBill();
             }} className={styles['go-shopping']}>
-               <Link to='/submitOrder'>去结算</Link>
+                去结算
             </div>
         </div>
     )

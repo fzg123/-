@@ -1,7 +1,7 @@
 import styles from './index.css'
 import Inessential from '../../../common/Inessential'
 import {Link} from 'umi'
-
+ 
 export default function (props) {
     return (
         <div className={styles['bottom']}>

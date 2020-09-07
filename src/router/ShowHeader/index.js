@@ -4,13 +4,22 @@ import {
 } from '@ant-design/icons';
 
 import { connect } from 'dva'
+
+
 const _config = {
     intercept: [
         { pathRegexp: /^\/myOrder/, path: '/myOrder' }
         ,
         { pathRegexp: /^\/myBoon/, path: '/myBoon' }
-        , {
-            pathRegexp: /^\/submitOrder/, target: '/shoppingCart'
+        ,
+        // {
+        //     pathRegexp: /^\/submitOrder/, target: '/shoppingCart'
+        // },
+        {
+            pathRegexp: /^\/orderAccomplish/, path: '/orderAccomplish'
+        },
+        {
+            pathRegexp: /^\/submitOrder/, path:'/submitOrder'
         }
     ]
 }
@@ -23,7 +32,7 @@ function ShowHeader(props) {
             <div className={styles['header']}>
                 <div className={styles["left"]}
                     onClick={() => {
-                        
+
                         let i;
                         let flag;
                         let targetPath = '/';
@@ -36,11 +45,11 @@ function ShowHeader(props) {
                             }
                         }
                         if (flag) {
-                           
+
                             targetPath = props.quitTargetPath[_config.intercept[i].path];
-                          
+
                             if (targetPath !== null || _config.intercept[i].target) {
-                               
+
                                 props.history.push(_config.intercept[i].target || targetPath);
                             }
                             else {

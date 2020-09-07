@@ -5,13 +5,13 @@ export default function GoBuy(props) {
     return (<div className={styles['go-buy']}>
         <div className={styles["left"]}>
             <img src={goShopCar} alt="" />
-            <i>{props.shopNum}</i>
+            {props.shopNum !== null ? <i>{props.shopNum}</i> : null}
         </div>
         <div className={styles["right"]}>
             <div
                 onClick={() => {
                     props.onGoShopCar();
-                    
+
                 }}
                 className={styles['button'] + ' ' + styles["go-shop-car"]}
             >加入购物车</div>

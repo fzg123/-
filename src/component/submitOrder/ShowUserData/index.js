@@ -7,41 +7,34 @@ import {
 import img from '../../../assets/min-img/img/user.png'
 import NotDefaultAddress from '../../submitOrder/NotDefaultAddress'
 import { connect } from 'dva'
+import { withRouter } from 'umi'
 function ShowUserData(props) {
-    const [addressData, setAddressData] = useState({
-        data: {},
-        states: 'idle'
-    })
-    useEffect(() => {
-        (async function () {
-            const result = await getDefaultHarvestAddress(props.loginData.userId);
-            setAddressData({
-                data: result.data.result,
-                states: 'idle'
-            })
-
-        }())
-    }, [])
+    const clickHandle = _ => props.history.push({
+        pathname: '/addressManage',
+        state: {
+            source: '/submitOrder'
+        }
+    });
     return (
-        <div className={styles['show-user-data']}>
-            {Array.isArray(addressData.data) ?
+        <div className={styles['show-user-data']} onClick={clickHandle}>
+            {Array.isArray(props.address.data) ?
                 <NotDefaultAddress />
                 :
                 <>
                     <p>
                         <span className={styles['user']}>
                             <img src={img} alt="" />
-                            {addressData.data.addressName}
+                            {props.address.data.addressName}
                         </span>
                         <span>
                             <span>
                                 <PhoneFilled />
                             </span>
-                            {addressData.data.addressPhone}
+                            {props.address.data.addressPhone}
                         </span>
                     </p>
                     <p>
-                        地址: {addressData.data.addressText}
+                        地址: {props.address.data.addressText}
                     </p>
                 </>
             }
@@ -52,4 +45,4 @@ function ShowUserData(props) {
 const mapStateToProps = state => ({
     loginData: state.loginData
 })
-export default connect(mapStateToProps)(ShowUserData);
+export default connect(mapStateToProps)(withRouter(ShowUserData));

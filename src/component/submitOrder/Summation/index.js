@@ -10,7 +10,7 @@ export default function Summation(props) {
                 <span>账单明细</span>
                 <span>
                     合计: <span className={styles['price']}>￥{props.summation}</span>
-                    <RightOutlined style={{fontSize:'14px',color:'#666'}} />
+                    <RightOutlined style={{ fontSize: '14px', color: '#666' }} />
                 </span>
 
             </div>
@@ -20,7 +20,7 @@ export default function Summation(props) {
                     <span className={styles['line']}>|</span>
                     <span className={styles['boon']}>优惠 : {props.boon}</span>
                 </div>
-                <div className={styles["right"]}>
+                <div onClick={() => { props.onSubmitOrder() }} className={styles["right"]}>
                     提交订单
                 </div>
             </div>

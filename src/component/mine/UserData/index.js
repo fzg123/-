@@ -2,20 +2,26 @@ import React from 'react'
 import styles from './index.css'
 import Bottom from './Bottom'
 import Top from './Top'
-UserData.defaultProps = {
-    userHeadSculptureSrc: 'https://dummyimage.com/216x200/50B347/FFF&text=Mock.js',
-    userName: '兔宝宝',
-    grade: "普通会员",
-    balance: 0,// 余额
-    integral: 0,// 积分
-    preferentialVolume: 0// 优惠卷
-}
-export default function UserData(props) {
+import { connect } from 'dva'
+function UserData(props) {
 
     return (
         <div className={styles['user-data']}>
-            <Top {...props}></Top>
-            <Bottom {...props}></Bottom>
+            <Top
+                userName={props.loginData.userName}
+                grade={'普通会员'}
+                userHeadSculptureSrc='https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js'
+
+            ></Top>
+            <Bottom
+                balance={props.loginData.userBalance}
+                integral={props.loginData.userIntegral}
+                preferentialVolume={props.loginData.userYhjCount}
+            ></Bottom>
         </div>
     )
 }
+const mapStateToProps = state => ({
+    loginData: state.loginData
+})
+export default connect(mapStateToProps)(UserData);

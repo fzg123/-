@@ -9,6 +9,7 @@ import NotLoingShow from '../../component/mine/NotLoginShow'
 import viewDatas from './data'
 
 function Mine(props) {
+   
     return (
         <div className={styles['mine']}>
             {props.loginData === null ? <NotLoingShow /> : <UserData></UserData>}
@@ -23,5 +24,8 @@ function Mine(props) {
 
     )
 }
-export default connect(state => ({ loginData: state.loginData }))(Mine);
+const mapStateToProps = state => ({
+    loginData: state.loginData
+})
+export default connect(mapStateToProps)(Mine);
 

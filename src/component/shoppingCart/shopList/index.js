@@ -11,8 +11,8 @@ export default function index(props) {
             name: e.fruit.fruitName,
             msg: e.fruit.fruitText,
             price: {
-                currentPrice: e.fruit.fruitInventedPrice,
-                prevPrice: e.fruit.fruitPrice
+                currentPrice: e.fruit.fruitPrice,
+                prevPrice: e.fruit.fruitInventedPrice
             },
             shopNum: e.shoppingCount,
             id: e.fruit.fruitId,

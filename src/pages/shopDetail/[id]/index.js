@@ -21,7 +21,8 @@ function ShopDetail(props) {
     const [shopData, setshopData] = useState({});
     useEffect(() => {
         (async function () {
-            props.fetchShopItems(props.loginData.userId); // 更新仓库中 购物车中数据 该页面需要用的此数据
+            if(props.loginData !== null) props.fetchShopItems(props.loginData.userId); // 更新仓库中 购物车中数据 该页面需要用的此数据
+            
             const result = await getShopDetail(props.match.params.id);
             setshopData({
                 ...shopData,
@@ -107,7 +108,7 @@ function ShopDetail(props) {
                         <GoBuy
                             onGoShopCar={() => onGoShopCar(value)}
                             onGoBuy={onGoBuy}
-                            shopNum={props.shopCartItem.length}
+                            shopNum={props.shopCartItem !== null ? props.shopCartItem.length : props.shopCartItem}
                             setFlagShowModal={value.setFlagShowModal}
                         ></GoBuy>
                     </div>

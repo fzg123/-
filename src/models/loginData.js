@@ -7,9 +7,12 @@ export default {
         }
     },
     effects: {
-        async upDataLoginData({payload}) {
-            const r = await selectUser(payload);
-            console.log(r)
+        *upDataLoginData({ payload }, { put, call }) {
+            const r = yield call(selectUser, payload);
+            yield put({
+                type: 'changeState',
+                payload: r.data.result
+            })
         }
     },
     subscriptions: {

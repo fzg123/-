@@ -4,7 +4,7 @@ import AddressListItem from './AddressListItem'
 export default function AddressList(props) {
     const lis = props.addressDatas.map((e, i) => {
         return (
-            <AddressListItem key={i} {...e} />
+            <AddressListItem onClick={props.onClick} key={i} {...e} />
         )
     })
     return (

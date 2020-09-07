@@ -22,39 +22,53 @@ function shoppingCart(props) {
             })
         }
     }, [])
-    let allPrice = null; // 总价
-    props.shopDatas.forEach(e => {   // 得到总价
-        if (e.shoppingStatus != 1) return;
-        allPrice += (e.shoppingCount * e.fruit.fruitInventedPrice)
-    })
+    const getTotalPrice = function () {// 得到总价
+        let allPrice = 0;
+        props.shopDatas.forEach(e => {
+            if (e.shoppingStatus != 1) return;
+            allPrice += (e.shoppingCount * e.fruit.fruitPrice)
+        })
+        allPrice = allPrice && allPrice.toFixed(2); // 保留两位小数
+        return allPrice;
+    }
+    const clickPayTheBill = function () {  // 点击了去结算要做的事情
 
-    allPrice = allPrice && allPrice.toFixed(2); // 保留两位小数
+        if (!props.shopDatas.some(e => e.shoppingStatus === 1)) {
+            message.info('至少选择一个商品，再点击去结算');
+            return;
+        }
+        props.history.push({
+            pathname: '/submitOrder',
+            state: {
+                source: '/shoppingCart'
+            }
+        })
+    }
+    const deleteItems = function () {  // 删除购物车选中项
+        setflagShowModal(true);
+        let flag = false;
+        const promises = [];  // 所有删除商品项的promise  
+        props.shopDatas.forEach(e => {
+            if (e.shoppingStatus == 1) {
+                flag = true;
+                const result = props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
+                promises.push(result);
+            }
+        })
+        if (flag) {
+            Promise.all(promises).then(d => {  // 等待全部删除完成
+                props.fetchShopItems(props.loginData.userId);  // 刷新购物车
+                setflagShowModal(false);
+                message.success('删除成功');
+            })
+        }
+    }
 
     const notData = <div className={styles['bottom']}><NotData /></div>; // 没有数据要展示的内容
     const content = (props.shopDatas.length !== 0 ?
         <>
-            <Header onClick={() => {
-                setflagShowModal(true);
-                let flag = false;
-                const promises = [];  // 得到所有删除商品项的promise  
-                props.shopDatas.forEach(e => {
-                    if (e.shoppingStatus == 1) {
-                        flag = true;
-                        const result = props.fetchRemoveShopItem(e.shoppingId);  // 删除该项
-                        promises.push(result);
-                    }
-                })
-                if (flag) {
-                    Promise.all(promises).then(d => {  // 等待全部删除完成
-                        props.fetchShopItems(props.loginData.userId);  // 刷新购物车
-                        setflagShowModal(false);
-                        message.success('删除成功');
-                    })
-                }
-                /**
-                 * 通知后端删除，并重新发送ajax请求，重新渲染数据
-                 */
-            }}></Header>
+            <Header onDelete={() => { deleteItems() }}></Header>
+            {/* 商品数据来自于仓库 */}
             <ShopList onChange={(newShopData) => {
                 props.setShopitem(newShopData);
             }} datas={props.shopDatas}></ShopList>
@@ -65,12 +79,10 @@ function shoppingCart(props) {
                         const check = isAllChecked ? 0 : 1;
                         props.setAllShopStatus(check)
                     }}
-                    onPayTheBill={() => { // 点击了去结算
-
-                    }}
-                    isAllEnter={isAllChecked}
-                    boon={0}
-                    allPrice={allPrice || 0} />
+                    onPayTheBill={() => { clickPayTheBill() }}  // 点击了去结算
+                    isAllEnter={isAllChecked}  // 全选
+                    boon={0} // 优惠了多少钱
+                    allPrice={getTotalPrice()} />
             </div>
         </>
         :

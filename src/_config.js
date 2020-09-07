@@ -11,7 +11,7 @@ export const intercept = ['/myRedPacket',
 ];
 // 主域名
 
-export const host = 'http://localhost:8888';
+export const host = 'http://zaima.cool:8888';
 
 // 图片的网络地址主要的前缀
 
@@ -33,3 +33,7 @@ export const notLoginShowData = (props, state, ctx) => {
     }
 }
 
+export const storeId = {
+    id: 1,
+    
+}

@@ -11,7 +11,7 @@ export default function WaitAppraise() {
     })
     return <ctx.Consumer>
         {value => {
-            return value.data['waitAppraise'].length === 0 ? <NotOrder /> : <OrderList datas={value.data['waitAppraise']}></OrderList>
+            return value.data['waitReceive'].length === 0 ? <NotOrder /> : <OrderList datas={value.data['waitReceive']}></OrderList>
 
         }}
     </ctx.Consumer>

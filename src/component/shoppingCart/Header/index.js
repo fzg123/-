@@ -10,8 +10,8 @@ export default function Header(props) {
                 <Link to='/'><img src={logo} alt="" /></Link>
             </div>
             <div className={styles['right']}>
-                <span onClick={()=>{
-                    props.onClick();
+                <span onClick={() => {
+                    props.onDelete();
                 }}>
                     删除
                 </span>

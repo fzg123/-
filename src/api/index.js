@@ -102,10 +102,16 @@ export const getAllUserAddress = async (userId) => (await ajax({ url: host + '/a
 
 /**
  * 
- * 获取用户订单接口
+ * 订单接口
  */
-export const getMyOrder = async (id) => (await ajax({ url: host + '/api/order/selectAllUserOrder?userId=' + id })).data;
 
+//获取用户所有订单
+export const getMyOrder = async (id) => (await ajax({ url: host + '/api/order/selectAllUserOrder?userId=' + id })).data;
+// 商品详情页 提交订单
+export const commitOrder = async (data) => (await ajax({ url: host + '/api/order/addOrder', data })).data;
+
+// 提交购物车中一个订单
+export const addOrder = async (data) => (await ajax({ url: host + '/api/order/clearShoping', data })).data;
 /**
  * 时令水果页面接口
  */

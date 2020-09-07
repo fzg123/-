@@ -1,38 +1,11 @@
 import React from 'react'
 import styles from './index.css'
 import ShopList from '../../component/home/HotShop/ShopList'
-
+import { connect } from 'dva'
 import img from '../../assets/min-img/img/72.png'
-OrderAccomplist.wrappers = ['@/router/ShowHeader'];
 
-OrderAccomplist.title = '订单完成'
-function OrderAccomplist() {
-    const r = [
-        {
-            src: 'https://dummyimage.com/216x200/50B347/FFF&text=Mock.js',
-            shopName: '好吃的梨子o快买',
-            msg: '实力派',
-            type: ['满减'],
-            price: 17.8,
-            _price: 18.9
-        },
-        {
-            src: 'https://dummyimage.com/216x200/50B347/FFF&text=Mock.js',
-            shopName: '好吃的梨子o快买',
-            msg: '实力派',
-            type: ['满减'],
-            price: 17.8,
-            _price: 18.9
-        },
-        {
-            src: 'https://dummyimage.com/216x200/50B347/FFF&text=Mock.js',
-            shopName: '好吃的梨子o快买',
-            msg: '实力派',
-            type: ['满减'],
-            price: 17.8,
-            _price: 18.9
-        }
-    ]
+function OrderAccomplist(props) {
+
     return (
         <div className={styles['order-accomp-list']}>
             <div className={styles["img"]}>
@@ -43,10 +16,17 @@ function OrderAccomplist() {
             </div>
             <div className={styles["btn"]}>
                 <div className={styles["btn-center"]}>
-                    <div className={styles["select-order"]}>
-                        查看订单
+                    <div onClick={() => { props.history.push(props.location.state.targetPath) }} className={styles["select-order"]}>
+                        继续选购
                     </div>
-                    <div className={styles["select-order"]}>
+                    <div
+                        onClick={() => {
+                            props.setTargetPath()
+                            props.history.push('/myOrder/all')
+                            
+                        }}
+                        className={styles["select-order"]}
+                    >
                         查看订单
                     </div>
                 </div>
@@ -56,11 +36,26 @@ function OrderAccomplist() {
                     你可能还喜欢
                 </p>
                 <ShopList
-                    shopDatas={r}
+                    shopDatas={[]}
                 />
             </div>
         </div>
     )
 }
+const mapDispatchToProps = dispatch => ({
+    setTargetPath() {
+        dispatch({
+            type: 'quitTargetPath/setTargetPath',
+            payload: {
+                key: '/myOrder',
+                value: '/orderAccomplish'
+            }
+        })
+    }
+})
 
-export default OrderAccomplist;
+const r = connect(null,mapDispatchToProps)(OrderAccomplist);
+r.wrappers = ['@/router/ShowHeader'];
+
+r.title = '订单完成'
+export default r;
