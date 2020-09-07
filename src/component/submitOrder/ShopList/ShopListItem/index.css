@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 7px 0;
-    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: .7rem 0;
+    border-bottom: .1rem solid rgb(236, 236, 236);
     align-items: center;
 }
 .shop-list-item p{
@@ -13,19 +13,19 @@
 .shop-list-item .shop-data{
     display: flex;
     /* justify-content: space-between; */
-    width: 140px;
+    width: 14.0rem;
 }
 .shop-list-item .shop-data img{
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
+    width: 4.0rem;
+    height: 4.0rem;
+    margin-right: .8rem;
 }
 .shop-list-item .shop{
     display: flex;
     flex-direction: column;
     color: black;
-    font-size: 14px;
-    max-width: 160px;
+    font-size: 1.4rem;
+    max-width: 16.0rem;
 }
 .shop-list-item .shop span{
     display: block;
@@ -35,20 +35,20 @@
     white-space: nowrap;
 }
 .shop-list-item .shop span:nth-of-type(2){
-    font-size: 12px;
-    margin-top: 3px;
+    font-size: 1.2rem;
+    margin-top: .3rem;
     color: rgb(104, 98, 98);
 }
 .num{
     color: black;
     font-weight: 700;
-    width: 50px;
+    width: 5.0rem;
 }
 .num .fh{
-    font-size: 11px;
+    font-size: 1.1rem;
 }
 .price{
-    font-size: 19px;
+    font-size: 1.9rem;
     color: rgb(240,165,67);
-    width: 50px;
+    width: 5.0rem;
 }

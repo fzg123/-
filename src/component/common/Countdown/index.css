@@ -1,5 +1,5 @@
 .countdown{
-    width: 115px;
+    width: 11.5rem;
 
     display: flex;
     justify-content: space-between;
@@ -7,10 +7,10 @@
     color: white;
 }
 .time{
-    width: 30px;
-    height: 30px;
+    width: 3.0rem;
+    height: 3.0rem;
     background-color: white;
     text-align: center;
-    line-height: 30px;
+    line-height: 3.0rem;
     font-weight: 700;
 }

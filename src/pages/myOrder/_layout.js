@@ -88,7 +88,7 @@ function _layout(props) {
 
                     </li>
                 </ul>
-                <Placeholder height={61.6}></Placeholder>
+                <Placeholder height={'6.16rem'}></Placeholder>
 
                 <div className={styles["content"]}>
                     {props.children}

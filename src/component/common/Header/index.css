@@ -3,18 +3,18 @@
     height: 6.9rem;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 2.0rem;
     position: relative;
 }
 .right{
     display: flex;
     align-items: center;
     height: 100%;
-    /* width: 200px; */
+    /* width: 20.0rem; */
     
 }
 .right img{
-    margin-right: 15px;
+    margin-right: 1.5rem;
 }
 .left img{
     width: 7.9rem;
@@ -35,13 +35,13 @@
 .address h3{
     font-size: 1.3rem;
     font-weight: 700;
-    margin-left: 15px;
+    margin-left: 1.5rem;
     cursor: pointer;
     margin-bottom: 0;
 }
 .line{
     width: 100%;
-    height: 1px;
+    height: .1rem;
     background-color: #ccc;
     position: absolute;
     bottom: 0;
@@ -49,11 +49,11 @@
 }
 
 .os{
-    margin-left: 5px;
+    margin-left: .5rem;
 
 }
 .os span{
-    font-size: 13px;
+    font-size: 1.3rem;
     vertical-align: middle;
     color: rgb(58, 57, 57);
 }

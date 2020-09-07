@@ -1,35 +1,35 @@
 .footer{
     width: 100%;
-    height: 45px;
+    height: 4.5rem;
     display: flex;
     justify-content: space-between;
-    margin: 0 20px;
+    margin: 0 2.0rem;
 }
 .go-shopping{
-    width: 110px;
-    height: calc(100% - 6px);
-    border-radius: 40px;
+    width: 11.0rem;
+    height: calc(100% - .6rem);
+    border-radius: 4.0rem;
     background-color: rgb(99,230,199);
-    /* margin-right: 40px; */
-    font-size: 16px;
-    line-height: 39px;
+    /* margin-right: 4.0rem; */
+    font-size: 1.6rem;
+    line-height: 3.9rem;
     text-align: center;
     color: white;
     /* font-weight: 700; */
 }
 .left{
-    margin-right: 15px;
+    margin-right: 1.5rem;
     height: 100%;
-    line-height: 45px;
+    line-height: 4.5rem;
 }
 .left img{
    
-        width: 33px;
-        height: 33px;
-        margin-right: 5px;
+        width: 3.3rem;
+        height: 3.3rem;
+        margin-right: .5rem;
 }
 .left span{
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 .msg{
     height: 100%;
@@ -48,16 +48,16 @@
     margin: 0;
 }
 .text{
-    font-size: 16px;
+    font-size: 1.6rem;
     color: black;
 }
 .price{
     color: rgb(247,77,82);
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 700;
 }
 .youhui{
-    font-size: 10px;
+    font-size: 1.0rem;
     color: rgb(119, 119, 119);
 }
 .go-shopping a{

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.less'
-import ShopItem from './ShopItem'
 import TakeTurns from '../../../TakeTurns'
 import FSShopItems from '../FSShopItems'
 import { getXianShiQG } from '@/api'

@@ -8,9 +8,10 @@ import Advert from '../component/home/Advert'
 import HopShop from '@/component/home/HotShop'
 import Inessential from '../component/common/Inessential'
 import { connect } from 'dva'
+import hd from '../assets/min-img/img/hd.png'
 function Home(props) {
   
-  const [imgSrcs, setImgSrcs] = useState([`https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js`, 'https://dummyimage.com/1030x298', 'https://dummyimage.com/1030x298'])
+  const [imgSrcs, setImgSrcs] = useState([`http://zaima.cool:8888/fruitImages/拼盘1.jpg`, 'http://zaima.cool:8888/fruitImages/拼盘2.jpg', 'http://zaima.cool:8888/fruitImages/西瓜1.jpg'])
   const [TakeTurnsWidth, setTakeTurnsWidth] = useState(0);
   const primaryRef = createRef();
   const [loading, setloading] = useState(false); // 加载状态
@@ -32,12 +33,13 @@ function Home(props) {
           width={TakeTurnsWidth - 40}
           height={'19rem'}
           howFreight={'img'}
+          flagAuto={false}
           waitAutoTime={2000}
         ></TakeTurns>
 
         <Nav loginData={props.loginData}></Nav>
         <FlashSale TakeTurnsWidth={TakeTurnsWidth} />
-        <Advert onClick={() => { }} imgSrc={'https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js'} />
+        <Advert onClick={() => { }} imgSrc={hd} />
 
         <HopShop />
         <Inessential />

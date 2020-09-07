@@ -152,7 +152,9 @@ export default class TakeTurns extends Component {
                         howFreight={this.props.howFreight}
 
                     />
-                    {!this.props.flagMobile ? <HandleBtn
+
+                    <HandleBtn
+                        style={{ visibility: "hidden" }}
                         isShowBtn={this.props.isShowBtn}
                         onChange={this.moveTo}
                         currentImg={this.state.currentImg}
@@ -161,7 +163,7 @@ export default class TakeTurns extends Component {
                         btnRightRef={this.btnRightRef}
                         btnLeftRef={this.btnLeftRef}
 
-                    /> : null}
+                    />
                     {this.props.imgSrcs.length > 1 &&
                         <Point
 
@@ -174,10 +176,6 @@ export default class TakeTurns extends Component {
                     }
 
                 </div>
-
-                {/* <button onClick={() => {
-                    this.imgContainer.moveTo(1);
-                }}>点击移动到第三张</button> */}
             </>
         )
     }

@@ -9,7 +9,7 @@ export default class index extends Component {
     }
     render() {
         return (
-            <div id='take-turns-btn' id={this.props.isShowBtn || this.props.flagMobile ? 'not-display': ''}>
+            <div id='take-turns-btn' style={this.props.style} id={this.props.isShowBtn || this.props.flagMobile ? 'not-display': ''}>
                 <div
                     id={'take-turns-btn-left'}
                     ref={this.props.btnLeftRef}

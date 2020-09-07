@@ -1,17 +1,17 @@
 .w {
     display: flex;
     justify-content: space-around;
-    margin: 10px 0;
+    margin: 1.0rem 0;
 }
 .w img{
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
+    width: 2.0rem;
+    height: 2.0rem;
+    margin: 0 .5rem;
 }
 .dui-huan{
     color: rgb(27,157,97);
 }
 .jifen{
     color: rgb(255,163,74);
-    font-size: 15px;
+    font-size: 1.5rem;
 }

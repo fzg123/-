@@ -6,7 +6,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 1.0rem 0;
     
 }
 .nav a{
@@ -17,5 +17,5 @@
 }
 .content{
     box-sizing: border-box;
-    padding: 10px 20px 0px 20px;
+    padding: 1.0rem 2.0rem .0rem 2.0rem;
 }

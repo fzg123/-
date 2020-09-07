@@ -1,7 +1,7 @@
 .commodityEvaluation{
     width: 100%;
-    padding: 0 20px;
-    margin-bottom: 10px;
+    padding: 0 2.0rem;
+    margin-bottom: 1.0rem;
 }
 .left{
     float: left;
@@ -10,16 +10,16 @@
     float: right;
 }
 .left span{
-    font-size: 19px;
+    font-size: 1.9rem;
     font-weight: 700;
     color: black;
 }
 .right a{
     color:black;
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 .commodityEvaluation header{
-    padding: 10px 0;
+    padding: 1.0rem 0;
     overflow: hidden;
-    border-bottom: 1px solid #ccc;
+    border-bottom: .1rem solid #ccc;
 }

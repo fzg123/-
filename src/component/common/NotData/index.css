@@ -1,17 +1,17 @@
 .not-data{
     width: 100%;
     display: flex;
-    /* height: calc(100% - 50px); */
+    /* height: calc(100% - 5.0rem); */
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
 }
 .not-data p{
-    margin-bottom: 45px;
-    font-size: 15px;
+    margin-bottom: 4.5rem;
+    font-size: 1.5rem;
 }
 .not-data img{
     width: 100%;
-    height: 240px;
+    height: 24.0rem;
     
 }

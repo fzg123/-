@@ -5,17 +5,17 @@
     overflow: auto;
 }
 .user-data{
-    height: 400px;
+    height: 40.0rem;
   width: 100%;  
-  border: 1px solid black;
+  border: .1rem solid black;
 }
 .operate-wrapper{
   width: 100%;
-  padding: 0 20px;
+  padding: 0 2.0rem;
   box-sizing: border-box;
-  height: calc(100% - 212px - 10px);
-  /* margin-bottom: 10px; */
+  height: calc(100% - 21.2rem - 1.0rem);
+  /* margin-bottom: 1.0rem; */
 }
 .operate-wrapper>div:not(:last-child){
-  margin-bottom: 10px;
+  margin-bottom: 1.0rem;
 }

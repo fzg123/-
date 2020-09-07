@@ -1,17 +1,17 @@
 .shop-list{
     width: 100%;
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 1.0rem 2.0rem;
     background-color: white;
-    margin-bottom: 10px;
+    margin-bottom: 1.0rem;
 }
 .shop-list ul{
     width: 100%;
 }
 .shop-list p{
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 .shop-list>p span{
     color: black;
-    margin-left: 3px;
+    margin-left: .3rem;
 }

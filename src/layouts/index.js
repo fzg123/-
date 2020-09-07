@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import styles from './index.css'
 import Menu from '../component/menu'
 import Header from '../component/common/containers/Header'
@@ -9,17 +9,21 @@ import Mask from '../component/common/Mask'
 import DisplayInform from '../component/common/DisplayInform'
 import { message } from 'antd';
 import qDImg from '../assets/min-img/img/60.png'
+import pxToRem from '../utils/listenOrRem'
 function Layouts(props) {
     console.log('重新渲染了');
     const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 为 null 表示不显示蒙层
     const [flagShowActivity, setflagShowactivity] = useState(false); // 是否显示签到页面
     const arr = ['/shoppingCart', '/mine'];  // 不需要使用头部组件的页面
+    useEffect(()=>{
+        pxToRem();
+    }, [])
     /**
      * 需要使用到通用布局的页面路径
      */
     const needShowNav = ['/', '/getIntoBuy', '/vogueFruit/\\w+', '/shoppingCart', '/mine']
-    if (props.address === null && props.location.pathname != '/details' &&props.location.pathname != '/selectCity') {
-    
+    if (props.address === null && props.location.pathname != '/details' && props.location.pathname != '/selectCity') {
+
         props.history.push('/selectCity'); // 如果还没有选择地区就进入首页的话  就重定向至选择城市页面
     }
     const flag = needShowNav.some(e => new RegExp('^' + e + '$').test(props.location.pathname));
@@ -48,7 +52,7 @@ function Layouts(props) {
                 {/* 内容区 */}
                 <div
 
-
+                    style={{ height: 'calc(100% - 7rem)' }}
                     className={styles.content}
                 >
                     {props.children}
@@ -64,7 +68,6 @@ function Layouts(props) {
                 :
 
                 <div
-
 
                     className={styles.content}
                 >

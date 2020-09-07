@@ -1,15 +1,15 @@
 .my-integral{
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
-    height: calc(100% - 45px);
+    padding: 0 2.0rem;
+    height: calc(100% - 4.5rem);
 }
 .zong-ji-fen {
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 2.0rem;
 }
 .zong-ji-fen img{
     width: 100%;
-    height: 200px;
+    height: 20.0rem;
 }

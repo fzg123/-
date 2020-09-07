@@ -1,5 +1,5 @@
 .order-list{
     display: flex;
     flex-direction: column;
-    padding: 10px 8px;
+    padding: 1.0rem .8rem;
 }

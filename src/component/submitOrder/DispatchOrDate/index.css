@@ -1,15 +1,15 @@
 .dispatch-data{
     width: 100%;
-    /* height: 80px; */
+    /* height: 8.0rem; */
     box-sizing: border-box;
     background-color: white;
-    padding: 0 20px;
-    margin-bottom: 10px;
+    padding: 0 2.0rem;
+    margin-bottom: 1.0rem;
 }
 .dispatch-data .item {
     width: 100%;
     overflow: hidden;
-    padding: 7px 0;
+    padding: .7rem 0;
     color: rgb(40, 63, 56);
 }
 .dispatch-data .item .left{
@@ -19,5 +19,5 @@
     float: right;
 }
 .dispatch-data .item:not(:last-child){
-    border-bottom: 1px solid #ccc;
+    border-bottom: .1rem solid #ccc;
 }

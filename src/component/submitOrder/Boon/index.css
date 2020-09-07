@@ -1,16 +1,16 @@
 .boon{
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 2.0rem;
     background-color: white;
-    margin-bottom: 10px;
+    margin-bottom: 1.0rem;
 }   
 .boon div{
     display: flex;
     justify-content: space-between;
     color: black;
-    padding: 10px 0;
+    padding: 1.0rem 0;
 }
 .boon div:not(:last-child){
-    border-bottom: 1px solid #ccc;
+    border-bottom: .1rem solid #ccc;
 }

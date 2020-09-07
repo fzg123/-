@@ -13,15 +13,15 @@
     text-align: center;
 }
 .center img{
-    width: 100px;
-    height: 100px;
+    width: 10.0rem;
+    height: 10.0rem;
 }
 .not-order P:nth-of-type(1){
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 700;
     color: rgb(97,228,196);
 }
 .not-order P:nth-of-type(2){
-    font-size: 13px;
+    font-size: 1.3rem;
     color: rgb(97,228,196);
 }

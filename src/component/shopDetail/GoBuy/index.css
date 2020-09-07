@@ -3,7 +3,7 @@
     overflow: hidden;
     height: 100%;
     background-color: white;
-    padding: 5px 20px;
+    padding: .5rem 2.0rem;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -17,36 +17,36 @@
 }
 .left i{
     position: absolute;
-    top: -5px;
-    right: -5px;
-    padding: 0 5px;
+    top: -.5rem;
+    right: -.5rem;
+    padding: 0 .5rem;
     background-color: red;
-    font-size: 10px;
+    font-size: 1.0rem;
     color: white;
     border-radius: 50%;
 
 }
 .left img{
-    width: 30px;
-    height: 30px;
+    width: 3.0rem;
+    height: 3.0rem;
 }
 .right{
     float: right;
     display: flex;
 }
 .button{
-    width:110px;
-    height: 35px;
-    border-radius: 12px;
-    font-size: 14px;
+    width:11.0rem;
+    height: 3.5rem;
+    border-radius: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 700;
     text-align: center;
-    line-height: 35px;
+    line-height: 3.5rem;
 }
 .go-shop-car{
    color:rgb(100,233,188);
-    border: 1px solid blue;
-    margin-right: 20px;
+    border: .1rem solid blue;
+    margin-right: 2.0rem;
 }
 .go-shop-buy{
     background-color: rgb(100,233,188);

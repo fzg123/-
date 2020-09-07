@@ -3,7 +3,7 @@
     background-color: rgb(217,236,230);
     height: 100%;
     box-sizing: border-box;
-    padding-top: 3px;
+    padding-top: .3rem;
 }
 .summation{
     position: fixed;

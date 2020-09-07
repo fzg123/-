@@ -9,14 +9,14 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 5px 20px 15px 20px;
-    /* padding: 0 20px; */
+    padding: .5rem 2.0rem 1.5rem 2.0rem;
+    /* padding: 0 2.0rem; */
     position: fixed;
-    top: 45px;
+    top: auto;
     left: 0;
 }
 .order-list ul li{
-    padding: 10px 6px;
+    padding: 1.0rem .6rem;
     position: relative;
 }
 .order-list ul li a{
@@ -31,7 +31,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: .2rem;
     display: none;
     background-color: rgb(101,227,200);
 }
@@ -41,7 +41,7 @@ a.active .currently{
 .content{
     width: 100%;
     background-color: rgb(237,250,243);
-    height: 629px;
+    height: 62.9rem;
     overflow: auto;
 
 }

@@ -4,65 +4,65 @@
 }
 .show-img{
     width: 100%;
-    min-height: 400px;
-    height: 400px;
+    min-height: 40.0rem;
+    height: 40.0rem;
 }
 .show-img img{
     height: 100%;
     width: 100%;
 }
 .msg{
-    margin-top: 10px;
+    margin-top: 1.0rem;
     text-align: center;
 }
 .msg .shop-name{
     font-weight: 700;
-    font-size: 17px;
+    font-size: 1.7rem;
     color: black;
 }
 .shop-msg{
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 p{
     margin: 0;
 }
 .content{
     display: inline-block;
-    padding: 5px 16px;
+    padding: .5rem 1.6rem;
     background-color: black;
     color: white;
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 .goShopAndCountdown{
     background-color: rgb(100,229,198);
-    height: 85px;
-    margin-top: 10px;
+    height: 8.5rem;
+    margin-top: 1.0rem;
 }
 .serve-type{
     display: flex;
     justify-content: start;
-    padding: 10px;
+    padding: 1.0rem;
     box-sizing: border-box;
 }
 .serve-type li{
-    margin-right: 20px;
-    font-size: 13px;
+    margin-right: 2.0rem;
+    font-size: 1.3rem;
 }
 .serve-type li span{
-    margin-left: 5px;
+    margin-left: .5rem;
 }
 .xq{
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
     color: black;
-    padding: 0 20px;
+    padding: 0 2.0rem;
 }
 .guige{
-    padding: 0 20px;
+    padding: 0 2.0rem;
 }
 .footer{
     width: 100%;
-    margin-top: 10px;
+    margin-top: 1.0rem;
 }
 .go-buy{
     width: 100%;

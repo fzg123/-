@@ -1,36 +1,36 @@
 .bottom{
     width: 100%;
-    height: 82px;
+    height: 8.2rem;
     /* overflow: hidden; */
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 2.0rem;
     position: relative;
     /* height: 100%; */
     
 }
 .content{
-    width: calc(100% - 40px);
+    width: calc(100% - 4.0rem);
     height: 100%;
     position: absolute;
-    top: -35px;
-    left:20px;
-    box-shadow: 0px 0px 10px -3px black;
+    top: -3.5rem;
+    left:2.0rem;
+    box-shadow: .0rem .0rem 1.0rem -.3rem black;
 }
 .content .top{
-    height: 35px;
-    line-height: 35px;
+    height: 3.5rem;
+    line-height: 3.5rem;
     background-color: rgb(231, 231, 231);
-    padding: 0 20px;
+    padding: 0 2.0rem;
     box-sizing: border-box;
 }
 .left{
-    width: 200px;
+    width: 20.0rem;
     position: relative;
     float: left;
 }
 .right{
     float: right;
-    font-size: 12px;
+    font-size: 1.2rem;
    
 }
 .right a{
@@ -39,7 +39,7 @@
 
 .mian{
     width: 100%;
-    height: 80px;
+    height: 8.0rem;
     display: flex;
     justify-content: space-around;
     text-align: center;

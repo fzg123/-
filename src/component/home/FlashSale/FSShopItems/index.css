@@ -3,3 +3,6 @@
     justify-content: space-between;
     width: 100%;
 }
+.shop-items a{
+    flex: 1 1;
+}

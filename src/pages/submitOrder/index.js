@@ -62,7 +62,7 @@ function SubmitOrder(props) {
         return shops.filter(e => e.shoppingStatus === 1);
     }
     const submitOrderHandle = () => {  // 提交订单操作
-
+        console.log(address.data)
         if (address.data.addressId === undefined) {
             message.info('请选择地址');
             return;

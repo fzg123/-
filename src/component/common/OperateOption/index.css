@@ -1,17 +1,17 @@
 .operate{
     width: 100%;
-    border-radius: 5px;
+    border-radius: .5rem;
     background-color: white;
 }
 .header{
-    border-bottom: 1px solid #ccc;
+    border-bottom: .1rem solid #ccc;
     overflow: hidden;
-    padding: 10px;
+    padding: 1.0rem;
     box-sizing: border-box;
 }
 .left{
     float: left;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 .right{
@@ -20,31 +20,31 @@
 }
 .right a{
     color: rgb(165, 165, 165);
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 .content{
     display: flex;
     flex-direction: column;
-    padding: 25px 0 10px 0;
+    padding: 2.5rem 0 1.0rem 0;
     box-sizing: content-box;
 }
 .content>ul{
     width: 100%;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
+    margin-bottom: 1.0rem;
 }
 .content img{
-    width: 30px;
-    height: 28px;
+    width: 3.0rem;
+    height: 2.8rem;
     
 }
 .operate li {
     text-align: center;
 }
 .operate li p{
-    font-size: 12px;
-    margin-top: 10px;
+    font-size: 1.2rem;
+    margin-top: 1.0rem;
 }
 .operate a{
     color: rgb(127,127,127);

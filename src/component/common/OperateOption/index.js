@@ -25,7 +25,7 @@ function OperateOption(props) {
     const itemRef = createRef();
     useEffect(() => {
         setitemWidth(window.getComputedStyle(itemRef.current, null)['width'])
-    })
+    },[])
     const uls = getUls(props, itemWidth, itemRef, styles);
     const content = uls.map((e, i) => (<ul key={i}>
         {e}

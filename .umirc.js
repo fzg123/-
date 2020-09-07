@@ -5,7 +5,7 @@ export default {
 
     },
     history: {
-        type: 'browser'
+        type: 'hash'
     },
     proxy: {
       
@@ -13,5 +13,8 @@ export default {
         //     target: 'http://localhost:8888',
         //     changeOrigin: true
         // }
-    }
+    },
+    chainWebpack(memo, { env, webpack, createCSSRule }) {
+       
+      }
 }

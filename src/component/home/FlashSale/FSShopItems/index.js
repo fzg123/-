@@ -24,7 +24,7 @@ export default function FSShopItems(props) {
 
 
     })
-    return (
+    return ( 
         <ul className={styles['shop-items']}>
             {shops}
         </ul>

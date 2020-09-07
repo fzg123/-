@@ -5,15 +5,15 @@
 }
 .left{
     float: left;
-    width: 280px;
+    width: 28.0rem;
 }
 .name{
-    font-size: 17px;
+    font-size: 1.7rem;
     color: black;
-    margin-right: 5px;
+    margin-right: .5rem;
 }
 .phone{
-    font-size: 14px;
+    font-size: 1.4rem;
     color: rgb(135,184,167);
 }
 .address{
@@ -21,10 +21,10 @@
 }
 .default{
     color: rgb(251,121,35);
-    padding: 2px;
-    border-radius: 8px;
+    padding: .2rem;
+    border-radius: .8rem;
     background-color: rgb(247,205,207);
-    margin-right: 5px;
+    margin-right: .5rem;
 }
 .d_a.active .default{
     display: inline;
@@ -32,10 +32,10 @@
 .right{
     float: right;
    
-    line-height: 63px;
+    line-height: 6.3rem;
     color: rgb(135,184,167);
 }
 .right span{
-    padding:1px 10px;
-    border-left: 1px solid rgb(135,184,167);
+    padding:.1rem 1.0rem;
+    border-left: .1rem solid rgb(135,184,167);
 }

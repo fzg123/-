@@ -12,7 +12,6 @@ function AddAddress(props) {
     const [address, setaddress] = useState('');
     const [phone, setphone] = useState('');
     const [name, setname] = useState('');
-    let source = '';
     const onSubmit = () => {
         (async function () {
             const s = await addAddress({
@@ -21,6 +20,7 @@ function AddAddress(props) {
                 addressPhone: phone,
                 userId: props.loginData.userId
             })
+           
             message.success('新增地址成功');
             if (props.location.state && props.location.state.targetPath === '/submitOrder') {
                 props.history.push({
@@ -30,14 +30,15 @@ function AddAddress(props) {
                             addressText: address,
                             addressName: name,
                             addressPhone: phone,
-                            userId: props.loginData.userId
+                            userId: props.loginData.userId,
+                            addressId: s.data.result.addressId
                         },
                         dataType: 'address',
                         source: '/addAddress'
                     }
                 });
             }
-            else{
+            else {
                 console.log(props.history)
                 props.history.goBack();
             }

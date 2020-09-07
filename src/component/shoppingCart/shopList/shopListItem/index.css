@@ -1,14 +1,14 @@
 .shop-list-item{
     width: 100%;
     overflow: hidden;
-    height: 120px;
-    padding: 13px 0px 20px 0;
+    height: 12.0rem;
+    padding: 1.3rem .0rem 2.0rem 0;
     box-sizing: content-box;
-    border-bottom: 1px solid rgb(236, 236, 236);
+    border-bottom: .1rem solid rgb(236, 236, 236);
 }
 .enter{
     float: left;
-    margin:0  10px; 
+    margin:0  1.0rem; 
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -17,52 +17,52 @@
 
 .img{
     float: left;
-    margin-right: 10px;
+    margin-right: 1.0rem;
     
 }
 .price-msg{
     float: left;
-    width: 84px;
+    width: 8.4rem;
 
 }
 .shop-num{
     float: left;
 }
 .enter img{
-    width: 33px;
-    height: 33px;
+    width: 3.3rem;
+    height: 3.3rem;
 }
 .img img{
-    width: 140px;
-    height: 120px;
+    width: 14.0rem;
+    height: 12.0rem;
 }
 .shop-list-item .name{
-   font-size: 16px;
+   font-size: 1.6rem;
    color: black;
-    margin-bottom: 3px;
+    margin-bottom: .3rem;
 }
 .shop-list-item p{
     margin: 0;
 }
 .shop-list-item .msg{
-    font-size: 12px;
+    font-size: 1.2rem;
     color: rgb(63, 63, 63);
-    margin-bottom: 20px;
+    margin-bottom: 2.0rem;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .current-price{
-    font-size: 18px;
+    font-size: 1.8rem;
     color:rgb(251,75,86);
-    margin-right: 8px;
+    margin-right: .8rem;
 }
 .money{
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 /* .money{
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 .cur-money{
     color: rgb(251,75,86);
@@ -76,7 +76,7 @@
    display: flex;
    flex-direction: column;
    justify-content: flex-end;
-   padding-bottom: 25px;
+   padding-bottom: 2.5rem;
    box-sizing: border-box;
-   margin-left: 20px;
+   margin-left: 2.0rem;
 }

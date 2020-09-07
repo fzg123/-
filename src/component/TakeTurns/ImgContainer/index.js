@@ -63,16 +63,17 @@ export default class ImgContainer extends Component {
         const p = this.props;
         let doms;
 
+        // 如果是自定义 
         if (p.howFreight === 'custom') {
             doms = p.imgSrcs.map((E, i) => {
 
 
-                return <div style={{width: p.width}} className={'custom'} key={i}>{E}</div>
+                return <div style={{ width: p.width }} className={'custom'} key={i}>{E}</div>
             })
 
 
-            doms.push(<div className={'custom'} key={p.imgSrcs.length}>{p.imgSrcs[0]}</div>);
-         
+            doms.push(<div style={{ width: p.width }}  className={'custom'} key={p.imgSrcs.length}>{p.imgSrcs[0]}</div>);
+
         }
         else {
             doms = p.imgSrcs.map((e, i) => {
@@ -84,7 +85,7 @@ export default class ImgContainer extends Component {
                         style={{
                             float: 'left',
                             width: p.width,
-                            height: p.height,
+                            height: p.height
                         }}
                     >
                         <img

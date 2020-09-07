@@ -1,11 +1,11 @@
 #take-turns-btn > div{
     display: block;
-    width: 25px;
-    height: 35px;
+    width: 25rem;
+    height: 35rem;
     position: absolute;
     top:50%;
     transform: translateY(-50%);
-    line-height: 35px;
+    line-height: 35rem;
     text-align: center;
     background-color: rgba(0, 0, 0, .1);
     cursor: pointer;

@@ -1,16 +1,16 @@
 .top{
     width: 100%;
-    height: 130px;
+    height: 13.0rem;
     background-color: rgb(99,230,198);
     box-sizing: border-box;
-    padding-top: 20px;
+    padding-top: 2.0rem;
 
 }
 .left img{
-    width: 50px;
-    height: 50px;
+    width: 5.0rem;
+    height: 5.0rem;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 1.0rem;
 }
 .msg{
     display: inline-block;
@@ -21,13 +21,13 @@
 }
 .msg p:nth-of-type(1){
     color: white;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 .msg p:nth-of-type(2) span{
-    font-size: 11px;
-    padding: 3px 6px;
-    border-radius: 10px;
+    font-size: 1.1rem;
+    padding: .3rem .6rem;
+    border-radius: 1.0rem;
     color: white;
     background-color: rgb(38,185,140);
 }
@@ -38,6 +38,6 @@
     float: right;
 }
 .center{
-    width: calc(100% - 40px);
+    width: calc(100% - 4.0rem);
     margin: 0 auto;
 }
