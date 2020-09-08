@@ -21,7 +21,7 @@ function OrderAccomplist(props) {
                     </div>
                     <div
                         onClick={() => {
-                            props.setTargetPath()
+                            props.setTargetPath(props.location.state.targetPath)
                             props.history.push('/myOrder/all')
                             
                         }}
@@ -43,12 +43,12 @@ function OrderAccomplist(props) {
     )
 }
 const mapDispatchToProps = dispatch => ({
-    setTargetPath() {
+    setTargetPath(path) {
         dispatch({
             type: 'quitTargetPath/setTargetPath',
             payload: {
                 key: '/myOrder',
-                value: '/orderAccomplish'
+                value: path
             }
         })
     }

@@ -4,6 +4,7 @@ import { message } from 'antd'
 import { addShopCart } from '../../../../api'
 import { connect } from 'dva'
 import Link from '../../../common/Link'
+import {addShopingCart} from '../../../../_config'
 function ShopItem(props) {
     return (
         <li className={styles['shop-item']}>
@@ -29,18 +30,14 @@ function ShopItem(props) {
                 <div
                     className={styles['go-shop']}
                     onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        (async function () {
-                            const result = await addShopCart({
-                                fruitId: props.id,
-                                userId: props.loginData.userId,
-                                count: 1
-                            })
-                            if (result.status === 'success') {
-                                message.success('添加购物车成功');
+                        addShopingCart(
+                            e,
+                            { fruitId: props.id, userId: props.loginData.userId },
+                            addShopCart,
+                            (bool) => {
+                                if (bool) message.success('添加购物车成功');
                             }
-                        }())
+                        )
                     }}
                 ></div>
 

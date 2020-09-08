@@ -8,12 +8,12 @@ import { getDefaultHarvestAddress } from '@/api'
 import { connect } from 'dva'
 import DispatchOrDate from '../../component/submitOrder/DispatchOrDate'
 import ShowUserData from '../../component/submitOrder/ShowUserData'
-import joinImgSrc from '../../utils/joinImgSrc'
 import { getAllShop } from '@/api'
 import Loading from '../../component/common/Loading'
-import { addOrder as commitOrder, commitOrder as commitOrder1 } from '../../api'
+// 一个是从购物车提交订单   一个是从商品详情页面提交订单
+import { addOrder as shoppingCartCommitOrder, commitOrder as commitOrder1 } from '../../api'
 import { message } from 'antd'
-import { allowStepPageName } from './config'
+import { allowStepPageName, mapServerDataToData } from './config'
 import getTotalPrice from '../../utils/getTotalPrice'
 function SubmitOrder(props) {
     const state = props.location.state;
@@ -26,16 +26,7 @@ function SubmitOrder(props) {
         (async function () {
             const shopItems = (await getAllShop(props.loginData.userId)).data.result;//得到购物车中数据
             let r = getActiveShopItem(shopItems);  // 得到购物车中选中的商品
-            r = r.map(e => ({   // 由于组件内使用的属性名跟从得到的服务器数据属性名不一致  所有转换一下
-                imgSrc: joinImgSrc(e.fruit.fruitImagesUrl, e.fruit.fruitImagesCount > 1),
-                name: e.fruit.fruitName,
-                msg: e.fruit.fruitText,
-                price: e.shoppingCount * e.fruit.fruitInventedPrice,
-                userId: props.loginData.userId,
-                fruitcount: e.shoppingCount,
-                fruitId: e.fruit.fruitId,
-                num: e.shoppingCount
-            }))
+            r = mapServerDataToData(r, props); // 由于从服务端获取的数据属性名 跟 视图使用的属性名不一致 所以转换一下
             setshopDatas({ data: r, status: 'idle' });
         }())
     }, [])
@@ -62,55 +53,34 @@ function SubmitOrder(props) {
         return shops.filter(e => e.shoppingStatus === 1);
     }
     const submitOrderHandle = () => {  // 提交订单操作
-        console.log(address.data)
+        let promise = null;
         if (address.data.addressId === undefined) {
             message.info('请选择地址');
             return;
         }
-        // 旧版api 处理方式  待删除
-        // const promises = [];
-        // shopDatas.data.forEach((shopItem, i) => {
-        //     const promise = commitOrder({
-        //         userId: props.loginData.userId,
-        //         shopId: props.shopId,
-        //         addressId: address.data.addressId,
-        //         fruitcount: shopItem.fruitcount,
-        //         fruitId: shopItem.fruitId
-        //     })
-        //     promises.push(promise);
-        // })
-
-        // 这里是正确的
-        const promise = commitOrder({
-            userId: props.loginData.userId,
-            shopId: props.shopId,
-            addressId: address.data.addressId,
-        })
-        promise.then(d => {
-            props.setTargetPath({  // 在订单完成页面 回退按钮 回退到购物车而不是提交订单页面
-                key: '/orderAccomplish',
-                value: sourcePath
-            })
-            props.history.push({
-                pathname: '/orderAccomplish',
-                state: {
-                    targetPath: sourcePath //  提交成功页面  点击那个继续选购 要跳转的路径
-                }
-
+        if (sourcePath === '/shoppingCart') {
+            // 发送网络请求
+            promise = shoppingCartCommitOrder({
+                userId: props.loginData.userId, 
+                shopId: props.shopId,
+                addressId: address.data.addressId,
+                orderstatus: 3,
+                
             });
-            message.success('提交订单成功');
-            props.upDataLoginData(props.loginData.userId);
+        }
+        promise.then(d => {
+
+            // 页面跳转
+            props.history.push({
+                pathname: '/pay',
+                state: {
+                    price: getTotalPrice(shopDatas.data),
+                    source: '/submitOrder',
+                    orderId: d.data.result.orderId,
+                    sourcePath
+                }
+            });
         })
-        // 商品详情页 处理方式
-        // commitOrder1({
-        //     userId: props.loginData.userId,
-        //     shopId: props.shopId,
-        //     addressId: address.data.addressId,
-        //     fruitcount: 1,
-        //     fruitId: 14
-        // }).then(d => {
-        //     console.log(d)
-        // })
     }
     const content = (
         <div className={styles['submit-order']}>
@@ -144,28 +114,8 @@ const mapStateToProps = state => ({
     loading: state.loading.models.shopCartItem,
     shopId: state.shopData.id
 })
-const mapDispatchToProps = dispatch => ({
-    onGetShopDatas(id) {
-        return dispatch({
-            type: 'shopCartItem/fetchShopItems',
-            payload: id
-        })
-    },
-    setTargetPath(obj) {
-        dispatch({
-            type: 'quitTargetPath/setTargetPath',
-            payload: obj
-        })
-    },
-    upDataLoginData(id) {
-        dispatch({
-            type: 'loginData/upDataLoginData',
-            payload: id
-        })
-    }
-})
 
-const r = connect(mapStateToProps, mapDispatchToProps)(SubmitOrder);
+const r = connect(mapStateToProps)(SubmitOrder);
 r.wrappers = ['@/router/ShowHeader'];
 
 r.title = '提交订单';

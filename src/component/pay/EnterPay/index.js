@@ -15,7 +15,7 @@ export default function EnterPay(props) {
             </p>
             <SelectPayType balance={props.balance} />
 
-            <div className={styles['pay']}>
+            <div onClick={() => { props.onCancelPay() }} className={styles['pay']}>
                 支付
             </div>
         </div>

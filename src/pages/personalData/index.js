@@ -76,7 +76,7 @@ function PersonalData(props) {
                 <div className={styles["item"]}>
                     <label>生 &nbsp;&nbsp;&nbsp;&nbsp;日</label>
                     <input onChange={(e) => inputChange('birthday', e.target.value)} value={userData.birthday} type="text" />
-
+             
                 </div>
                 <div className={styles["item"]}>
                     <label>会员等级</label>

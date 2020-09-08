@@ -14,13 +14,13 @@ function Nav(props) {
             {value => {
                 return <ul className={styles.nav}>
                     <li>
-                        <NavItem src={x} path='/' text={'限时抢购'} />
+                        <NavItem src={x} path='/noDevelopment' text={'限时抢购'} />
                     </li>
                     <li>
                         <NavItem src={c} path='/recharge' text={'充值有礼'} />
                     </li>
                     <li>
-                        <NavItem src={d} path='/' text={'多人拼团'} />
+                        <NavItem src={d} path='/noDevelopment' text={'多人拼团'} />
                     </li>
                     <li>
                         <NavItem onClick={() => {

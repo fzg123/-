@@ -1,17 +1,6 @@
 import React from 'react'
 import styles from './index.css'
 export default function ShopListItem(props) {
-
-    /**
-     *  {
-                    imgSrc: 'https://dummyimage.com/216x200/50B347/FFF&text=Mock.js',
-
-                    name: '阳光冬枣1份-不',
-                    msg: '冬日假期刚刚结束我还有点糊涂',
-                    num: 1,
-                    price: 8.8
-                },
-     */
     return (
         <div className={styles['shop-list-item']}>
             <div className={styles["shop-data"]}>

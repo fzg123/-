@@ -10,8 +10,6 @@ import { login } from '../../api'
 function Login(props) {
     const [userName, setUserName] = useState('');
     const [pwd, setpwd] = useState('');
-
-    // if (props.loginData !== null) props.history.push('/');
     const onLogin = async () => {
         const { state, msg } = check(userName, pwd); // 检验是否合法 格式是否满足条件 如何全部通过 返回true
         if (!state) {
@@ -79,7 +77,7 @@ const mapDispatchToProps = dispatch => ({
             type: 'loginData/changeState',
             payload: userId
         })
-        window.localStorage.setItem('userId', JSON.stringify(userId));
+        
         const path = props.location.state && props.location.state.path;
         dispatch(routerRedux.push(path != undefined ? path : '/'))
     }

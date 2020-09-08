@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './index.css'
 import logo from '@/assets/min-img/img/73.png'
-import { Link, NavLink } from 'umi'
+import Link from '../../common/Link'
 import PropTypes from 'prop-types'
 import { withRouter } from 'umi'
 import search from '@/assets/min-img/img/21.png'
@@ -19,7 +19,7 @@ function Header(props) {
             <div className={styles.left}>
                 <Link to='/'><img src={logo} alt="" /></Link>
 
-                    <div onClick={() => {
+                <div onClick={() => {
                     props.history.push('/selectCity')
                 }} className={styles.address}>
                     <h3>
@@ -32,8 +32,13 @@ function Header(props) {
 
             </div>
             <div className={styles.right}>
-                <img src={search} style={{ width: '3.0rem', height: '3rem', cursor: 'pointer' }} alt="" />
-                <AppstoreAddOutlined style={{ fontSize: '2.3rem', cursor: 'pointer' }} />
+                <Link to='/noDevelopment'>
+                    <img src={search} style={{ width: '3.0rem', height: '3rem', cursor: 'pointer' }} alt="" />
+                </Link>
+
+                <Link to='/noDevelopment'>
+                    <AppstoreAddOutlined style={{ fontSize: '2.3rem', cursor: 'pointer',color:'rgb(112,112,112)' }} />
+                </Link>
             </div>
             <div className={styles.line}></div>
         </header>

@@ -24,9 +24,11 @@ function AddressManage(props) {
             }
         })
     }, [])
+
     // 是否从提交订单页面跳转过来的
     const source = props.location.state != null && props.location.state.source === '/submitOrder';
-    const clickItemHandle = ({ addressId, addressText, addressName, addressPhone }) => {
+
+    const clickItemHandle = ({ addressId, addressText, addressName, addressPhone }) => { //点击了地址项
 
         if (props.location.state != null && props.location.state.source === '/submitOrder') {
             props.history.push({

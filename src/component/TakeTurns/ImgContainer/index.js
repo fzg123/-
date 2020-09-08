@@ -121,7 +121,7 @@ export default class ImgContainer extends Component {
                 </a>
             ));
         }
-
+        
         return (
             <div
                 className={'img-container ' + this.props.howFreight}

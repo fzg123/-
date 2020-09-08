@@ -74,7 +74,7 @@ class CheckIn {
 
             form(value, minLength = 6, maxLength = 12) {
                 const r = new RegExp(`^[A-z][\\w_]{${minLength - 1},${maxLength - 1}}$`).test(value);
-             
+
                 if (!r) {
                     return {
                         state: false,
@@ -84,7 +84,7 @@ class CheckIn {
                 else {
                     return {
                         state: true,
-                        msg:''
+                        msg: ''
                     }
                 }
 
@@ -111,7 +111,7 @@ class CheckIn {
                 if (value.length < minLength) {
                     return {
                         state: false,
-                        msg: '长度不能少于6'
+                        msg: '长度不能少于' + minLength
                     }
                 }
                 return {
@@ -123,7 +123,7 @@ class CheckIn {
                 if (value.length > maxLength) {
                     return {
                         state: false,
-                        msg: '长度不能大于12'
+                        msg: '长度不能大于' + maxLength
                     }
                 }
                 return {
@@ -144,8 +144,8 @@ class CheckIn {
                     }
                 }
             },
-            compare(value, msg){
-                if(value[1] !== value[0]){
+            compare(value, msg) {
+                if (value[1] !== value[0]) {
                     return {
                         state: false,
                         msg: '两次的值不同'

@@ -35,6 +35,7 @@ export default class TakeTurns extends Component {
 
         };
         if (this.props.flagAuto && this.props.imgSrcs.length > 1) {
+            
             this.timer = setInterval(this.autoLunBo, this.props.waitAutoTime);
         }
         if (this.props.flagMobile) {

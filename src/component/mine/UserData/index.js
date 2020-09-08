@@ -8,10 +8,9 @@ function UserData(props) {
     return (
         <div className={styles['user-data']}>
             <Top
-                userName={props.loginData.userName}
+                userName={props.loginData.userNickname}
                 grade={'普通会员'}
                 userHeadSculptureSrc='https://dummyimage.com/1038x298/50B347/FFF&text=Mock.js'
-
             ></Top>
             <Bottom
                 balance={props.loginData.userBalance}

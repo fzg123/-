@@ -38,7 +38,7 @@ export default function index() {
             </div>
             <div className={styles.right}>
                 <p>
-                    <NavLink to='/'>
+                    <NavLink to='/getIntoBuy'>
                         全部商品&gt;&gt;
                     </NavLink>
                 </p>

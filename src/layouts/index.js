@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './index.css'
 import Menu from '../component/menu'
 import Header from '../component/common/containers/Header'
@@ -10,13 +10,16 @@ import DisplayInform from '../component/common/DisplayInform'
 import { message } from 'antd';
 import qDImg from '../assets/min-img/img/60.png'
 import pxToRem from '../utils/listenOrRem'
+
+// import d from '../assets/json/five-level-address.json'
 function Layouts(props) {
     console.log('重新渲染了');
-    const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 为 null 表示不显示蒙层
+    const [flagShowHintModal, setFlagShowHintModal] = useState(null); // 提示窗口 为 null 表示不显示蒙层
     const [flagShowActivity, setflagShowactivity] = useState(false); // 是否显示签到页面
     const arr = ['/shoppingCart', '/mine'];  // 不需要使用头部组件的页面
-    useEffect(()=>{
+    useEffect(() => {
         pxToRem();
+        
     }, [])
     /**
      * 需要使用到通用布局的页面路径

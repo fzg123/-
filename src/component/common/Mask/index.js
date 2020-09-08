@@ -5,7 +5,7 @@ Mask.propTypes = {
     position: PropTypes.oneOf(['center', 'bottom']),
     bgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     maskClick: PropTypes.func, // 点击蒙层区域时，做的事情
-    flagShow: PropTypes.bool,
+    flagShow: PropTypes.bool, // 是否展示蒙层
     wFlagInherit: PropTypes.bool //宽度是否继承
 }
 Mask.defaultProps = {

@@ -7,7 +7,7 @@ import { connect } from 'dva'
 import NotLoingShow from '../../component/mine/NotLoginShow'
 
 import viewDatas from './data'
-
+ 
 function Mine(props) {
    
     return (

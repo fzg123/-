@@ -8,7 +8,7 @@ Countdown.propTypes = {
         f: propTypes.number,
         m: propTypes.number
     }).isRequired,
-    timeEnd: propTypes.func.isRequired,// 倒计时到了要执行的函数1
+    timeEnd: propTypes.func.isRequired,// 倒计时到了要执行的函数
     bgColor: propTypes.string,
     color: propTypes.string
 }

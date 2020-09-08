@@ -50,7 +50,7 @@ export default function index(props) {
 
                 imgSrcs={items}
                 width={props.TakeTurnsWidth - 40}
-                height={200}
+                height={170}
                 howFreight={'custom'}
                 flagAuto={true}
                 waitAutoTime={3000}

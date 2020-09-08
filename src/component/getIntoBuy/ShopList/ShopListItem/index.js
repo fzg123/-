@@ -28,7 +28,7 @@ function ShopListItem(props) {
                         距结束: {Math.floor((Math.random() * 40)) + 3}天
                     </p>
                     <p>
-                        ￥{props.fruitInventedPrice}
+                        ￥{props.fruitPrice}
                     </p>
                 </div>
                 <div onClick={(e)=>{e.stopPropagation()}}>

@@ -5,6 +5,7 @@ import { connect } from 'dva'
 import { addAddress } from '../../../api'
 import ctx from '../context'
 import { message } from 'antd'
+import Address from '../../../component/common/Address'
 /**
  * 新增地址
  */
@@ -20,7 +21,7 @@ function AddAddress(props) {
                 addressPhone: phone,
                 userId: props.loginData.userId
             })
-           
+
             message.success('新增地址成功');
             if (props.location.state && props.location.state.targetPath === '/submitOrder') {
                 props.history.push({
@@ -44,40 +45,12 @@ function AddAddress(props) {
             }
         }())
     }
-    return (<ul className={styles['add-address']}>
-        <li className={styles['item']}>
-            <label htmlFor="address">收获地址: </label>
-            <input
-                value={address}
-                id='address'
-                type="text"
-                onChange={(e) => { setaddress(e.target.value) }}
-            />
-        </li>
-        <li className={styles['item']}>
-            <label htmlFor="name">姓名: </label>
-            <input
-                value={name}
-                id='name'
-                type="text"
-                onChange={(e) => { setname(e.target.value) }}
-            />
-        </li>
-        <li className={styles['item']}>
-            <label htmlFor="phone">电话: </label>
-            <input
-                value={phone}
-                id='phone'
-                type="text"
-                onChange={(e) => { setphone(e.target.value) }}
-            />
-        </li>
-        <li>
-            <button onClick={() => {
-                onSubmit();
-            }}>添加</button>
-        </li>
-    </ul>)
+    return <div className={styles['add-address']}>
+        <div className={styles['center']}>
+            <Address />
+        </div>
+
+    </div>
 
 
 }

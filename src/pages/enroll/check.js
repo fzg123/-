@@ -55,7 +55,7 @@ export default function (userName, pwd, nickname, t_pwd) {
         });
         chenkIn.add({
             name: 'minLength',
-            params: [nickname, undefined],
+            params: [nickname, 2],
         });
         chenkIn.add({
             name: 'maxLength',
