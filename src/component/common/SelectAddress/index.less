@@ -1,0 +1,73 @@
+.select-address{
+    width:100%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    line-height: 50px;
+    position: relative;
+    
+}
+.header .left ul{
+    display: flex;
+    justify-content: flex-start;
+}
+.header .left li{
+    width: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+
+}
+.left{
+    
+    width: 100%;
+}
+.left ul{
+    width: 100%;
+    height: 100%;
+}
+.left ul li{
+    padding: 0 5px;
+}
+.content{
+    position: absolute;
+    top:50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto;
+    
+    
+}
+.content li{
+    
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+li.active{
+    color: red;
+}
+li.active .line{
+    display: block;
+}
+.line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+    width: 100%;
+    height: 3px;
+    display: none;
+}

@@ -27,9 +27,8 @@ function AddressManage(props) {
 
     // 是否从提交订单页面跳转过来的
     const source = props.location.state != null && props.location.state.source === '/submitOrder';
-
-    const clickItemHandle = ({ addressId, addressText, addressName, addressPhone }) => { //点击了地址项
-
+    //点击了地址项
+    const clickItemHandle = ({ addressId, addressText, addressName, addressPhone }) => {
         if (props.location.state != null && props.location.state.source === '/submitOrder') {
             props.history.push({
                 pathname: props.location.state.source,
@@ -42,6 +41,7 @@ function AddressManage(props) {
 
         }
     }
+    // 点击了添加地址
     const addAddress = function () {
         let state = null;
         if (source) {
@@ -52,14 +52,24 @@ function AddressManage(props) {
             state
         })
     }
+    // 点击了编辑
+    const edit = function (addressData) {
+        props.history.push({
+            pathname: props.location.pathname + '/edit',
+            state: addressData
+        })
+    }
     return (
 
         <div className={styles['address-manage']}>
             <div className={styles["header"]}>
-                <div onClick={() => {
-                    addAddress();
-                }} className={styles["right"]}>
-                    新增地址
+                <div
+                    onClick={() => {
+                        addAddress();
+                    }}
+                    className={styles["right"]}
+                >
+                    添加地址
                 </div>
             </div>
             <div className="content">
@@ -69,12 +79,17 @@ function AddressManage(props) {
                         <div className={styles['bottom']}><NotData text='暂时还没有地址, 快去添加吧~'></NotData></div>
                         :
                         <AddressList
+                            onEdit={edit}
                             addressDatas={addressDatas}
                             onClick={clickItemHandle}
                         />
 
                 }
             </div>
+            {/* <div  className={styles['add-address']}>
+                添加地址
+               
+            </div> */}
         </div>
 
 

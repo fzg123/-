@@ -6,13 +6,13 @@ Mask.propTypes = {
     bgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     maskClick: PropTypes.func, // 点击蒙层区域时，做的事情
     flagShow: PropTypes.bool, // 是否展示蒙层
-    wFlagInherit: PropTypes.bool //宽度是否继承
+    wFlagInherit: PropTypes.bool, //宽度是否继承
 }
 Mask.defaultProps = {
     bgColor: 'rgba(0,0,0,.45)',
     position: 'center',
     flagShow: true,
-    wFlagInherit: false
+    wFlagInherit: false,
 }
 export default function Mask(props) {
     const position = {
@@ -41,7 +41,7 @@ export default function Mask(props) {
                     onClick={(e) => {
                         e.stopPropagation();
                     }}
-                    style={{ ...position[props.position],width: props.wFlagInherit ? '100%': 'auto' }}
+                    style={{ ...position[props.position],width: props.wFlagInherit ? '100%': 'auto',height:props.height ? props.height :'auto' }}
                     className={styles["content"]}
                 >
                     {props.children}

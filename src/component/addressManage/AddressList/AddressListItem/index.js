@@ -15,15 +15,26 @@ export default function AddressListItem(props) {
                     </span>
                 </p>
                 <p className={styles['d_a'] + ' ' + (props.isDefault ? styles['active'] : '')}>
-                   
+
                     {props.addressDefault === 1 ? <span className={styles['default']}>默认</span> : null}
                     <span className={styles['address']}>
                         {props.addressText}
                     </span>
                 </p>
             </div>
-            <div className={styles["right"]}>
-                <span onClick={() => { props.onReset() }}>编辑</span>
+            <div onClick={(e) => e.stopPropagation()} className={styles["right"]}>
+                <span
+                    onClick={(e) => {
+                        props.onEdit({
+                            id: props.addressId,
+                            index: props.index,
+                            default: props.addressDefault,
+                            name: props.addressName,
+                            phone: props.addressPhone
+                        })
+                    }}
+
+                >编辑</span>
             </div>
         </li>
     )

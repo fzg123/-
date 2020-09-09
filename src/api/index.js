@@ -129,8 +129,10 @@ export const getDefaultHarvestAddress = async (id) => (await ajax({ url: host + 
 
 // 添加一个地址
 export const addAddress = async (data) => (await ajax({ url: host + '/api/address/insertAddress', data })).data;
-
-
+// 编辑一个地址
+export const editAddress = async (data) => (await ajax({ url: host + '/api/address/updateAddress', data })).data;
+// 删除一个地址
+export const deletaAddress = async (id) => await (await ajax({ url: '/api/address/delectAddress?addressId=' + id })).data;
 /**
  * 
  * 城市

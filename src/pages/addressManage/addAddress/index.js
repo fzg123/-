@@ -5,21 +5,28 @@ import { connect } from 'dva'
 import { addAddress } from '../../../api'
 import ctx from '../context'
 import { message } from 'antd'
+import SelectAddress from '../../../component/common/SelectAddress'
+import Mask from '../../../component/common/Mask'
 import Address from '../../../component/common/Address'
+import { getAddress } from '@/utils'
+import globalCtx from '../../../layouts/context'
 /**
  * 新增地址
  */
 function AddAddress(props) {
-    const [address, setaddress] = useState('');
-    const [phone, setphone] = useState('');
-    const [name, setname] = useState('');
-    const onSubmit = () => {
+    const [flagSelectCity, setFlagSelectCity] = useState(false);
+    // 选择的地区
+    const [address, setaddress] = useState(null);
+
+    const onCommit = (data, ctx) => {
+
         (async function () {
             const s = await addAddress({
-                addressText: address,
-                addressName: name,
-                addressPhone: phone,
-                userId: props.loginData.userId
+                addressText: getAddress(address, data.address, false),
+                addressName: data.name,
+                addressPhone: data.phone,
+                userId: props.loginData.userId,
+                addressDefault: data.default
             })
 
             message.success('新增地址成功');
@@ -45,13 +52,30 @@ function AddAddress(props) {
             }
         }())
     }
-    return <div className={styles['add-address']}>
-        <div className={styles['center']}>
-            <Address />
-        </div>
+    const onClose = (ctx) => {
+        setFlagSelectCity(false);
+    }
+    const enterSelectCity = (address) => {
+        setFlagSelectCity(false);
+        setaddress(address);
+    }
+    return (
+        <globalCtx.Consumer>
+            {ctx => (
+                <div className={styles['add-address']}>
+                    <div className={styles['center']}>
+                        <Address address={address} onCommit={(data) => { onCommit(data) }} onSelectCity={() => { setFlagSelectCity(true) }} />
+                    </div>
+                    <Mask flagShow={flagSelectCity} height={'50%'} wFlagInherit={true} position='bottom'>
+                        <SelectAddress onClose={() => { onClose() }} onEnterAddress={enterSelectCity} />
+                    </Mask>
+                </div>
+            )
+            }
 
-    </div>
+        </globalCtx.Consumer>
 
+    )
 
 }
 

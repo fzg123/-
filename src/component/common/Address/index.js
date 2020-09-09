@@ -1,79 +1,79 @@
 import React, { useState } from 'react'
 import styles from './index.less'
-import { Select } from 'antd'
+import { Input, Switch } from 'antd'
+import {
+    RightOutlined
+} from '@ant-design/icons';
+import { getAddress } from '@/utils'
+import Mask from '../../common/Mask'
 
-import addressData from '../../../assets/json/five-level-address.json'
-Address.defaultValue = {
-    shengId: 17,
-    shiId: 0,
-    xianId: 0
-}
 function Address(props) {
-    const { Option } = Select;
-    // 省
-    const [shengId, setShengId] = useState(props.shengId);
-    // 市
-    const [shiId, setShiId] = useState(props.shiId);
-    // 县
-    const [xianId, setXianId] = useState(props.xianId);
-
-    // 得到省数据
-    const shengData = addressData.map((e, i) => {
-        return <Option id={i} key={i} value={i}>{e.name}</Option>
-    });
-
-    // 得到市数据
-    let shiData = null;
-    let shi = addressData[shengId].children;
-    if (shi.length === 1) {
-
-        shiData = shi[0].children.map((e, i) => {
-            return <Option id={i} key={e.code} value={i}>{e.name}</Option>
-        })
-    }
-    else {
-        shiData = shi.map((e, i) => {
-            return <Option id={i} key={e.code} value={i}>{e.name}</Option>
-        })
-    }
 
 
-    let xian = null;
-    let xianData = null;
+    // 姓名
+    const [name, setname] = useState(props.address ? props.address.name : '');
+    // 手机号
+    const [phone, setphone] = useState(props.address ? props.address.phone : '');
 
-    if (shi[shiId].length === 1) xian = shi[shiId].children[0];
-    else xian = shi[shiId].children;
-    xianData = xian.map((e, i) => {
-        return <Option id={i} key={e.code} value={i}>{e.name}</Option>
-    })
+    // 详细地址
+    const [address, setaddress] = useState('');
+
+    // 是否默认地址
+    const [moren, setmoren] = useState(props.address ? props.address.default : '');
+
+
     return (
-        <ul className={styles['address']}>
-            <li className={styles['item']}>
-                <div className={styles["header"]}>
-                    地址选择
+        <>
+            <ul className={styles['address']}>
+                <li className={styles['item']}>
+                    <div className={styles["left"]}>
+                        收货人
                 </div>
-                <div className="content">
-                    <Select onChange={(value) => {
-                        setShengId(value);
-                    }} defaultValue={shengId}>
+                    <div className={styles['right']}>
+                        <Input value={name} onChange={(e) => { setname(e.target.value) }} placeholder="收货人姓名" bordered={false} />
+                    </div>
+                </li>
+                <li className={styles['item']}>
+                    <div className={styles["left"]}>
+                        手机号码
+                    </div>
+                    <div className={styles['right']}>
+                        <Input type='number' value={phone} onChange={(e) => { setphone(e.target.value) }} placeholder="收货人手机号码" bordered={false} />
+                    </div>
+                </li>
+                <li className={styles['item']}>
+                    <div className={styles["left"]}>
+                        地址选择
+                    </div>
+                    <div onClick={() => props.onSelectCity()} className={styles['right'] + ' ' + styles['dizhi']}>
+                        {/* 迫于无赖 只能这样写 */}
+                        {(props.address && props.address.sheng) ? getAddress(props.address) : '点击选择'} <RightOutlined />
+                    </div>
+                </li>
+                <li className={styles['item']}>
+                    <div className={styles["left"]}>
+                        详情地址
+                    </div>
+                    <div className={styles['right']}>
+                        <Input value={address} onChange={(e) => { setaddress(e.target.value) }} placeholder="街道/学校/酒店" bordered={false} />
+                    </div>
+                </li>
 
-                        {shengData}
-                    </Select>
-                    <Select onChange={(value) => {
-                        setShiId(value);
-                    }} defaultValue={shiId}>
+            </ul>
+            <div className={styles['default']}>
 
-                        {shiData}
-                    </Select>
-                    <Select onChange={(value) => {
-                        setXianId(value);
-                    }} defaultValue={xianId}>
-
-                        {xianData}
-                    </Select>
+                <div className={styles["moren"]}>
+                    是否为默认收货地址
                 </div>
-            </li>
-        </ul>
+                <div>
+                    <Switch onChange={(b) => { setmoren(b) }} checked={moren} defaultChecked />
+                </div>
+            </div>
+            <div onClick={() => { props.onCommit && props.onCommit({ name, phone, address, default: moren }) }} className={styles["enter"]}>
+                添加/修改
+            </div>
+
+        </>
     )
 }
 

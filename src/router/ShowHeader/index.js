@@ -6,29 +6,7 @@ import { leavePay } from '../../_config'
 import { connect } from 'dva'
 import ctx from '../../layouts/context'
 import { message } from 'antd'
-
-const _config = {
-    intercept: [
-        { pathRegexp: /^\/myOrder/, path: '/myOrder' }
-        ,
-        { pathRegexp: /^\/myBoon/, path: '/myBoon' }
-        ,
-        // {
-        //     pathRegexp: /^\/submitOrder/, target: '/shoppingCart'
-        // },
-        {
-            pathRegexp: /^\/orderAccomplish/, path: '/orderAccomplish'
-        },
-        {
-            pathRegexp: /^\/pay/,
-            path: '/pay',
-            beforeLeave: (ctx, props, callback) => {
-                ctx.setFlagShowModal(leavePay(props, null, ctx, callback, message));
-            },
-            target: '/shoppingCart'
-        }
-    ]
-}
+import _config from './config'
 let _props;
 function ShowHeader(props) {
     _props = props;
