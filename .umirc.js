@@ -5,7 +5,7 @@ export default {
 
     },
     history: {
-        type: 'browser'
+        type: 'hash'
     },
     proxy: {
       
