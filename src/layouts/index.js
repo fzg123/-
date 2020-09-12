@@ -55,7 +55,7 @@ function Layouts(props) {
                 {/* 内容区 */}
                 <div
 
-                    style={{ height: 'calc(100% - 7rem)' }}
+                 
                     className={styles.content}
                 >
                     {props.children}

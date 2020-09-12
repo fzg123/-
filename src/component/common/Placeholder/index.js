@@ -5,7 +5,7 @@ Placeholder.defaultProps = {
 }
 export default function Placeholder(props) {
     return (
-        <div style={{ height: props.height }}>
+        <div className='redundant' style={{ height: props.height,...props.style }}>
 
         </div>
     )

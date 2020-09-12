@@ -25,7 +25,7 @@ function OperateOption(props) {
     const itemRef = createRef();
     useEffect(() => {
         setitemWidth(window.getComputedStyle(itemRef.current, null)['width'])
-    },[])
+    }, [])
     const uls = getUls(props, itemWidth, itemRef, styles);
     const content = uls.map((e, i) => (<ul key={i}>
         {e}
@@ -37,7 +37,12 @@ function OperateOption(props) {
                 <div className={styles['left']}>
                     <span>{props.totalText}</span>
                 </div>
-                <div className={styles['right']}>
+                <div className={styles['right']} onClick={() => {
+                    props.setTargetPath({
+                        key: '/myOrder',
+                        value: '/mine'
+                    })
+                }}>
                     {props.link && <Link to={props.link.path}>{props.link.text}</Link>}
                 </div>
             </div>

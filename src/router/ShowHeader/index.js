@@ -2,10 +2,10 @@ import styles from './index.less'
 import {
     LeftOutlined
 } from '@ant-design/icons';
-import { leavePay } from '../../_config'
+
 import { connect } from 'dva'
 import ctx from '../../layouts/context'
-import { message } from 'antd'
+
 import _config from './config'
 let _props;
 function ShowHeader(props) {

@@ -56,7 +56,10 @@ function AddressManage(props) {
     const edit = function (addressData) {
         props.history.push({
             pathname: props.location.pathname + '/edit',
-            state: addressData
+            state: {
+                ...addressData,
+                notShowDefault: addressData.default  // 是否不需要展示 选择默认地址
+            }
         })
     }
     return (

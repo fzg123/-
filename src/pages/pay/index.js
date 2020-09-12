@@ -10,7 +10,9 @@ import Loading from '../../component/common/Loading'
 import {orderPay} from '../../api'
 import {message} from 'antd'
 function pay(props) {
-    if(props.location.state.source !== '/submitOrder') props.history.push('/');
+    const state = props.location.state;
+    const permitStepPage = ['/submitOrder', '/orderDetails']; // 允许跳转的页
+    if(!permitStepPage.includes(state.source)) props.history.push('/')
     const [status, setstatus] = useState('loading');
    
     useEffect(()=>{
@@ -24,7 +26,7 @@ function pay(props) {
     const onCancelPay = ()=>{  // 支付操作
         (async function(){
             const result  = await orderPay({
-                orderId: props.location.state.orderId,
+                orderId: state.orderId,
                 userId: props.loginData.userId, 
                 shopId: props.shopId,
                 status:2
@@ -34,16 +36,19 @@ function pay(props) {
                 // 扣款了  所有更新一下 仓库个人信息
                 props.upDataLoginData(props.loginData.userId);
 
-                // 在订单完成页面 回退按钮 回退到购物车而不是 提交订单页面
-                props.setTargetPath({  
-                    key: '/orderAccomplish',
-                    value: props.location.state.sourcePath
-                })
+                if(state.source === '/submitOrder'){
+                    // 在订单完成页面 回退按钮 回退到购物车而不是 提交订单页面
+                    props.setTargetPath({  
+                        key: '/orderAccomplish',
+                        value: state.sourcePath
+                    })
+                }
+              
                 props.history.push({
                     pathname: '/orderAccomplish',
                     state: {
                         //  提交成功页面  点击那个继续选购 要跳转的路径
-                        targetPath: props.location.state.sourcePath 
+                        targetPath: state.sourcePath 
                     }
 
                 });
@@ -95,7 +100,7 @@ function pay(props) {
             >
                     <EnterPay
                         balance={props.loginData.userBalance}
-                        price={props.location.state.price}
+                        price={state.price}
                         
                         onCancelPay={onCancelPay}
                     />

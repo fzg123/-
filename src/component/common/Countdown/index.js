@@ -10,7 +10,8 @@ Countdown.propTypes = {
     }).isRequired,
     timeEnd: propTypes.func.isRequired,// 倒计时到了要执行的函数
     bgColor: propTypes.string,
-    color: propTypes.string
+    color: propTypes.string,
+    render: propTypes.func
 }
 Countdown.defaultProps = {
     bgColor: 'white',
@@ -25,7 +26,7 @@ export default function Countdown(props) {
     })
     const [stopCountdown, setstopCountdown] = useState(false)
     useEffect(() => {
-        const checkUp = () => {clearTimeout(timer);}
+        const checkUp = () => { clearTimeout(timer); }
 
         if (time.m === 0) {
 
@@ -69,6 +70,9 @@ export default function Countdown(props) {
         return checkUp;
     });
 
+    if ('render' in props) {
+        return props.render(time);
+    }
 
     return (
         <div className={styles['countdown']}>

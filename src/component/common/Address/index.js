@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { getAddress } from '@/utils'
 import Mask from '../../common/Mask'
+import { message } from 'antd'
 
 function Address(props) {
 
@@ -21,7 +22,13 @@ function Address(props) {
     // 是否默认地址
     const [moren, setmoren] = useState(props.address ? props.address.default : '');
 
-
+    const onCommit = () => {
+        if (name === '' || phone === '' || address === '') {
+            message.info('内容不能为空');
+            return;
+        }
+        props.onCommit && props.onCommit({ name, phone, address, default: moren });
+    }
     return (
         <>
             <ul className={styles['address']}>
@@ -60,16 +67,23 @@ function Address(props) {
                 </li>
 
             </ul>
-            <div className={styles['default']}>
+            {props.notShowDefault
+                ?
+                null :
+                (
+                    < div className={styles['default']}>
 
-                <div className={styles["moren"]}>
-                    是否为默认收货地址
-                </div>
-                <div>
-                    <Switch onChange={(b) => { setmoren(b) }} checked={moren} defaultChecked />
-                </div>
-            </div>
-            <div onClick={() => { props.onCommit && props.onCommit({ name, phone, address, default: moren }) }} className={styles["enter"]}>
+                        <div className={styles["moren"]}>
+                            是否为默认收货地址
+                        </div>
+                        <div>
+                            <Switch onChange={(b) => { setmoren(b) }} checked={moren} defaultChecked />
+                        </div>
+                    </div>
+                )
+            }
+
+            <div onClick={() => { onCommit() }} className={styles["enter"]}>
                 添加/修改
             </div>
 

@@ -4,14 +4,16 @@ import Mask from './Mask'
 import PropTypes from 'prop-types'
 
 Modal.defaultProps = {
-    type: 'warning'
+    type: 'warning',
+    isShowCancel: true
 }
 Modal.propTypes = {
     afterEnterCallback: PropTypes.func, // 确实之后的回调
     afterCancelCallback: PropTypes.func,// 取消之后的回调
     children: PropTypes.node,   // 内容区显示的内容
     title: PropTypes.string, // 标题，不传递就是用默认的
-    isShow: PropTypes.bool // 是否显示
+    isShow: PropTypes.bool, // 是否显示
+    isShowCancel: PropTypes.bool,  //是否显示取消按钮
 }
 
 export default function Modal(props) {
@@ -47,14 +49,18 @@ export default function Modal(props) {
                 >
                     确认
         </div>
-                <div
-                    className={styles["right"]}
-                    onClick={() => {
-                        props.afterCancelCallback && props.afterCancelCallback();
-                    }}
-                >
-                    取消
-        </div>
+                {
+                    props.isShowCancel
+                        ?
+                        <div
+                            className={styles["right"]}
+                            onClick={() => {
+                                props.afterCancelCallback && props.afterCancelCallback();
+                            }}
+                        >
+                            取消
+                        </div>
+                        : null}
             </footer>
         </div>
     </Mask>) : null)

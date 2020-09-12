@@ -39,7 +39,7 @@ export const leavePay = (props, state, ctx, callback, message) => {
         title: '提示',
         children: '您还没支付, 确定要离开吗',
         afterEnterCallback: () => {
-            message.info('支付失败, 订单已添加到我的订单, 超过24小时之后, 订单将失效', 5)
+            message.info('支付失败, 订单已添加到我的订单, 超过指定时间之后, 订单将失效', 5)
             callback(true);
 
             ctx.setFlagShowModal(null);  // 同时关掉蒙层

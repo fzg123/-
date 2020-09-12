@@ -18,7 +18,7 @@ function L({ staticContext, dispatch, ...props }) {
 
                         e.preventDefault();
                         
-                        if (props.to === noDevelopment) {
+                        if (props.to === noDevelopment || props.to.pathname === noDevelopment) {
                             message.warning('抱歉, 暂未开发');
                             return;
                         } else if (props.logindata === null) {

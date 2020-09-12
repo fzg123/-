@@ -26,7 +26,7 @@ export default function GoBuy(props) {
                     props.onGoBuy();
                 }}
                 className={styles['button'] + ' ' + styles["go-shop-buy"]}
-            >立即抢购</div>
+            >{props.isFlagQG === 1 ? '立即抢购' : '立即购买'}</div>
         </div>
     </div>)
 }

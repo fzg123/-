@@ -5,10 +5,7 @@ function NotDefaultAddress(props) {
     return (
 
         <div className={styles['not-default-address']}>
-            <div onClick={() => {
-               
-                
-            }} className="icon">
+            <div className="icon">
                 您还没有地址，点击去添加地址
             </div>
         </div>

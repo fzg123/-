@@ -31,12 +31,12 @@ function ShopListItem(props) {
                         ￥{props.fruitPrice}
                     </p>
                 </div>
-                <div onClick={(e)=>{e.stopPropagation()}}>
-                    <Link to='/noDevelopment'>
-                        <div className={styles.right}>
-                            去抢购
+                <div>
+
+                    <div className={styles.right}>
+                        去抢购
                     </div>
-                    </Link>
+
                 </div>
 
 

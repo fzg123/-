@@ -1,7 +1,7 @@
 import styles from './index.css'
 import Inessential from '../../../common/Inessential'
-import {Link} from 'umi'
- 
+import Link from '../../../common/Link'
+import { noDevelopment } from '@/_config'
 export default function (props) {
     return (
         <div className={styles['bottom']}>
@@ -11,18 +11,18 @@ export default function (props) {
                         <Inessential notCenter={true}></Inessential>
                     </div>
                     <div className={styles['right']}>
-                        <Link to={'/'}>查看会员权益></Link>
+                        <Link to={noDevelopment}>查看会员权益></Link>
 
                     </div>
                 </div>
                 <div className={styles['mian']}>
                     <div className={styles['money']}>
-                        <p className={styles['money']+' '+styles['number']}>{props.balance}</p>
+                        <p className={styles['money'] + ' ' + styles['number']}>{props.balance}</p>
                         <p className={styles['msg']}>
                             钱包余额
                         </p>
                     </div>
-                    <div className={styles['integral']+' '}>
+                    <div className={styles['integral'] + ' '}>
                         <p className={styles['number']}>{props.integral}</p>
                         <p>我的积分</p>
                     </div>

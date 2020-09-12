@@ -1,11 +1,34 @@
 import React from 'react'
 import styles from './index.less'
 import joinImgSrc from '../../../../utils/joinImgSrc'
-export default function OrderListItem(props) {
+import { withRouter } from 'umi'
+function OrderListItem(props) {
     const arr = ['待评价', '退款成功', '待收货', '待付款', '交易成功', '订单失效', '退款中']
     const imgSrc = joinImgSrc(props.fruit.fruitImagesUrl, props.fruit.fruitImagesCount !== 1);
+
     return (
-        <li className={styles['order-list-item']}>
+        <li
+            className={styles['order-list-item']}
+            onClick={() => {
+                props.history.push({
+                    pathname: '/orderDetails',
+                    state: {
+                        orderId: props.orderId,
+                        orderStatus: props.orderStatus,
+                        orderCount: props.orderCount,
+                        fruit: props.fruit,
+                        deOrderId: props.deOrderId,
+                        userId: props.userId,
+                        address: props.address,
+                        orderTime: props.orderTime,
+                        shop: props.shop,
+                        orderIntegral: props.orderIntegral,
+                        count: props.orderCount,
+                        oddTime: props.oddTime
+                    }
+                })
+            }}
+        >
             <div className={styles["top"]}>
                 <div className={styles["left"]}>
                     订单编号: {props.orderId}
@@ -23,3 +46,4 @@ export default function OrderListItem(props) {
         </li>
     )
 }
+export default withRouter(OrderListItem);

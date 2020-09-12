@@ -5,6 +5,7 @@ import {
     RightOutlined
 } from '@ant-design/icons';
 import { connect } from 'dva'
+import { noDevelopment } from '@/_config'
 /**
  *  integral
  * @param {*} props 
@@ -13,19 +14,19 @@ function Boon(props) {
 
     return (
         <div className={styles['boon']}>
-            <Link to={props.path.integral}>
+            <Link to={noDevelopment}>
                 <div className={styles['integral']}>
                     <span>积分抵扣</span>
                     <span>{props.integral}积分<RightOutlined /></span>
                 </div>
             </Link>
             <Link to={{
-                pathname: props.path.boon,
+                pathname: noDevelopment,
                 state: {
                     path: '/shoppingCart'
                 }
             }} target='/'>
-                <div onClick={()=>{
+                <div onClick={() => {
                     props.setTargetPath({
                         key: '/myBoon',
                         value: '/submitOrder'

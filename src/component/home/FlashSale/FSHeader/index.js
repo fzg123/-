@@ -3,6 +3,7 @@ import styles from './index.css'
 import s from '@/assets/min-img/img/6.png'
 import { NavLink } from 'umi'
 import Countdown from '../../../common/Countdown'
+import DaoJiShi from '../../DaoJiShi'
 export default function index() {
     return (
         <div className={styles.top}>
@@ -28,9 +29,7 @@ export default function index() {
                                 m: 60
                             }}
                             timeEnd={()=>{console.log('时间到了')}}
-                            bgColor={'rgb(94,94,94)'}
-                            color={'white'}
-                            dianColor={'rgb(94,94,94)'}
+                            render={DaoJiShi}
                         ></Countdown>
                     </div>
                 </div>

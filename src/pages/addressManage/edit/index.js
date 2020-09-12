@@ -6,28 +6,35 @@ import SelectAddress from '../../../component/common/SelectAddress'
 import { getAddress } from '@/utils'
 import { editAddress, deletaAddress } from '@/api'
 import { message } from 'antd'
+import { connect } from 'dva'
 import globalCtx from '../../../layouts/context'
 function Edit(props) {
-    console.log(props);
+
     const [flagSelectCity, setflagSelectCity] = useState(false);
     // 选择的地址
     const [address, setaddress] = useState({
         name: props.location.state.name,
         phone: props.location.state.phone,
-        default: props.location.state.default,
+        default: props.location.state.default * 1,  // false => 0   true => 1
         // address:  由于后端返回的数据原因 初始地址无法注入
         // xQAddress: 详情地址   由于后端原因 无法注入
     });
     const onCommit = (data) => {
+        if (address === null) {
+            message.info('请选择城市');
+            return;
+        }
         (async function () {
             const result = await editAddress({
                 addressId: props.location.state.id,
                 addressText: getAddress(address, data.address, false),
                 addressPhone: data.phone,
                 addressName: data.name,
-                addressDefault: data.default
+                addressDefault: data.default * 1,
+                userId: props.loginData.userId
             });
-            console.log(result);
+            message.success('修改成功');
+            props.history.goBack();
         }())
 
     }
@@ -53,7 +60,7 @@ function Edit(props) {
         <globalCtx.Consumer>
             {ctx => (<div className={styles['edit']}>
                 <div className={styles["center"]}>
-                    <Address address={address} onCommit={onCommit} onSelectCity={() => { setflagSelectCity(true) }} />
+                    <Address notShowDefault={props.location.state.notShowDefault} address={address} onCommit={onCommit} onSelectCity={() => { setflagSelectCity(true) }} />
                     <div onClick={e => { deleteAddress(ctx) }} className={styles['delete']}>删除该地址</div>
                 </div>
                 <Mask flagShow={flagSelectCity} height={'50%'} wFlagInherit={true} position='bottom'>
@@ -64,6 +71,11 @@ function Edit(props) {
 
     )
 }
-Edit.wrappers = ['@/router/ShowHeader'];
-Edit.title = '编辑地址';
-export default Edit;
+
+const mapStateToProps = state => ({
+    loginData: state.loginData
+})
+const r = connect(mapStateToProps)(Edit);
+r.wrappers = ['@/router/ShowHeader'];
+r.title = '编辑地址';
+export default r;

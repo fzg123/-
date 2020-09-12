@@ -102,7 +102,7 @@ export const getAllUserAddress = async (userId) => (await ajax({ url: host + '/a
 
 /**
  * 
- * 订单接口
+ * 订单相关接口
  */
 
 //获取用户所有订单
@@ -113,6 +113,16 @@ export const commitOrder = async (data) => (await ajax({ url: host + '/api/order
 export const orderPay = async (data) => (await ajax({ url: host + `/api/order/updateOrderStatus`, data })).data;
 // 提交购物车中一个订单
 export const addOrder = async (data) => (await ajax({ url: host + '/api/order/clearShoping', data })).data;
+// 从商品详情页 提交订单
+export const directAddOrder = async (data) => (await ajax({ url: host + '/api/order/addOrder', data })).data;
+// 确认收货
+export const enterOrder = async (data) => (await ajax({ url: host + '/api/order/updateOrderStatus', data })).data;
+// 查询某一个订单
+export const selectOrder = async (id) => (await ajax({ url: host + '/api/order/selectIdOrder?orderId=' + id })).data;
+// 取消一个订单
+export const cancelOrder = async (data) => (await ajax({ url: host + '/api/order/updateOrderStatus', data })).data;
+// 删除一个订单
+export const deleteOrder = async id => (await ajax({ url: host+'/api/order/deleteOrder?orderId=' + id })).data
 /**
  * 时令水果页面接口
  */
@@ -132,7 +142,7 @@ export const addAddress = async (data) => (await ajax({ url: host + '/api/addres
 // 编辑一个地址
 export const editAddress = async (data) => (await ajax({ url: host + '/api/address/updateAddress', data })).data;
 // 删除一个地址
-export const deletaAddress = async (id) => await (await ajax({ url: '/api/address/delectAddress?addressId=' + id })).data;
+export const deletaAddress = async (id) => await (await ajax({ url: host + '/api/address/delectAddress?addressId=' + id })).data;
 /**
  * 
  * 城市

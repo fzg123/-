@@ -10,13 +10,14 @@ import {
 import Placeholder from '../../../component/common/Placeholder'
 import CommodityEvaluation from '../../../component/shopDetail/CommodityEvaluation'
 import ShopImgDetail from '../../../component/shopDetail/shopImgDetail'
-import { getShopDetail, addShopCart } from '@/api'
+import { getShopDetail, addShopCart, directAddOrder } from '@/api'
 import { useEffect, useState } from 'react'
 import joinImgSrc from '../../../utils/joinImgSrc'
 import { connect } from 'dva'
 import { message } from 'antd'
 import ctx from '../../../layouts/context'
 import { notLoginShowData } from '../../../_config'
+// import joinImgSrc from '../../../utils/joinImgSrc'
 function ShopDetail(props) {
     const [shopData, setshopData] = useState({});
     useEffect(() => {
@@ -32,7 +33,7 @@ function ShopDetail(props) {
 
     }, [])
     const getShopDetailImg = () => {  // 获取商品详情描述图
-       
+
         if (shopData.fruitId === undefined) return [];
         if (shopData.fruitImagesCount == 1) return [joinImgSrc(shopData.fruitImagesUrl, false)];
         const imgArr = [];
@@ -64,9 +65,19 @@ function ShopDetail(props) {
 
     }
 
-    // 去抢购
-    const onGoBuy = () => {
-        console.log('立即抢购操作')
+    // 直接购买操作
+    const onGoBuy = async () => {
+        props.history.push({
+            pathname: '/submitOrder',
+            state: {
+                source: '/shopDetail/' + shopData.fruitId,
+                name: shopData.fruitName,
+                msg: shopData.fruitText,
+                imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
+                num: 1,
+                price: shopData.fruitPrice
+            }
+        })
     }
 
 
@@ -91,9 +102,15 @@ function ShopDetail(props) {
 
                         </div>
                     </div>
-                    <div className={styles["goShopAndCountdown"]}>
-                        <PriceAndCountdown currentPrice={shopData.fruitPrice} prevPrice={shopData.fruitInventedPrice} time={{ s: 0, f: 33, m: 43 }}></PriceAndCountdown>
-                    </div>
+                    {shopData.fruitIsTime === 1
+                        ?
+                        <div className={styles["goShopAndCountdown"]}>
+                            <PriceAndCountdown currentPrice={shopData.fruitPrice} prevPrice={shopData.fruitInventedPrice} time={{ s: 0, f: 33, m: 43 }}></PriceAndCountdown>
+                        </div>
+                        :
+                        null
+                    }
+
 
                     <ul className={styles["serve-type"]}>
                         <li><SmileTwoTone></SmileTwoTone><span>品质保证</span></li>
@@ -126,6 +143,7 @@ function ShopDetail(props) {
                             onGoBuy={onGoBuy}
                             shopNum={props.shopCartItem !== null ? props.shopCartItem.length : props.shopCartItem}
                             setFlagShowModal={value.setFlagShowModal}
+                            isFlagQG={shopData.fruitIsTime} // 是否为抢购 1为抢购 0为不抢购
                         ></GoBuy>
                     </div>
                     <Placeholder height={45}></Placeholder>
