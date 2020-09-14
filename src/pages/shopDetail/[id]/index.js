@@ -67,6 +67,9 @@ function ShopDetail(props) {
 
     // 直接购买操作
     const onGoBuy = async () => {
+        if (props.loginData === null) {
+            value.setFlagShowModal(notLoginShowData(props, { path: props.location.pathname }, value));
+        }
         props.history.push({
             pathname: '/submitOrder',
             state: {

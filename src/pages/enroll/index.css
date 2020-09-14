@@ -1,12 +1,14 @@
 .enroll{
     width: 100%;
-    height: calc(100% - 4.5rem);
+    height: calc(100% - 5rem);
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 .center{
     width: 30rem;
     height: 25rem;
+    box-sizing: border-box;
+    padding-top: 25px;
 }
 

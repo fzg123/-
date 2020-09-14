@@ -69,7 +69,7 @@ function pay(props) {
                         <span>待支付</span> <RightOutlined />
                     </div>
                     <div className="right">
-                        剩余时间 00 : 59 : 56
+                        {/* 剩余时间 00 : 59 : 56 */}
                     </div>
                 </div>
                 <div className={styles["msg"]}>

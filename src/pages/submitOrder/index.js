@@ -17,9 +17,7 @@ import { allowStepPageName, mapServerDataToData } from './config'
 import getTotalPrice from '../../utils/getTotalPrice'
 function SubmitOrder(props) {
     const state = props.location.state;
-
     // 如果不是从指定的页面跳转过来 或者想从浏览器地址输入订单路径 进入 直接跳转至首页
-
     let flagPage = allowStepPageName.some(e => new RegExp('^' + e).test(state.source));
     if (!(state && flagPage)) props.history.push('/');
     let sourcePath = state.source;  // 来这个页面的路径

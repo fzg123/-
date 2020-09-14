@@ -49,7 +49,7 @@ function Enroll(props) {
     }
     return (
         <div className={styles['enroll']}>
-            <div className="center">
+            <div className={styles["center"]}>
 
                 <Form
                     name="normal_login"

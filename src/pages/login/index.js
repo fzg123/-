@@ -45,7 +45,7 @@ function Login(props) {
 
     return (
         <div className={styles['login']}>
-            <div className="center">
+            <div className={styles["center"]}>
 
                 <From
                     onLogin={onLogin}
