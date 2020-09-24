@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './index.css'
-import { Link } from 'umi'
+import Link from '../../../component/common/Link'
 import Appraise from '../Appraise'
 import {
     RightOutlined
 } from '@ant-design/icons';
+import { noDevelopment } from '@/_config'
 /**
  * 商品评价模块
  * @param {} props 
@@ -18,7 +19,7 @@ export default function CommodityEvaluation(props) {
                     <span>商品评价 ({props.datas.length})</span>
                 </div>
                 <div className={styles['right']}>
-                    <Link to='/'>查看更多评价 <RightOutlined /></Link>
+                    <Link to={noDevelopment}>查看更多评价 <RightOutlined /></Link>
                 </div>
             </header>
             <ul className="wrapper">

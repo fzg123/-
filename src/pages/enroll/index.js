@@ -3,7 +3,7 @@ import styles from './index.css';
 import { Link } from 'umi'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Radio } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import check from './check'
 import { message } from 'antd';
 import ajax from '../../server/ajax'
@@ -115,7 +115,7 @@ function Enroll(props) {
                         <Input
                             value={nickName}
                             onChange={(e) => setNickName(e.target.value)}
-                            prefix={<LockOutlined className="site-form-item-icon" />}
+                            prefix={<UserSwitchOutlined /> }
                             placeholder="请输入昵称"
                         />
                     </Form.Item>
