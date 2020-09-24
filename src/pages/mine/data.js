@@ -18,14 +18,14 @@ export default {
             },
             {
                 icon: zt,
-                text: '代自提',
-                path: '/noDevelopment',
+                text: '待收货',
+                path: '/myOrder/waitReceive',
                 state: 'especial'
             },
             {
                 icon: tk,
-                text: '已退款',
-                path: '/myOrder/alreadyRefund',
+                text: '已完成',
+                path: '/myOrder/haveFinished',
                 state: 'especial'
             }, {
                 icon: jifen,
