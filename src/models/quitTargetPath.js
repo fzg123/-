@@ -3,7 +3,8 @@ export default {
         '/myBoon': null,
         '/myOrder': null,
         '/orderAccomplish': null,
-        '/submitOrder': null
+        '/submitOrder': null,
+        '/shopDetail': null
     },
     reducers: {
         setTargetPath(state, { payload: { key, value } }) {
@@ -23,6 +24,41 @@ export default {
                 ...state,
                 ...obj
             }
+        }
+    },
+    subscriptions: {
+        listener({ history, dispatch }) {
+
+            history.listen((l, a) => {
+                const pathname = l.pathname;
+                if (new RegExp('^\/getIntoBuy').test(pathname)) {
+                    dispatch({
+                        type: 'setTargetPath',
+                        payload: {
+                            key: '/shopDetail',
+                            value: pathname
+                        }
+                    })
+                }
+                else if (new RegExp('^\/vogueFruit').test(pathname)) {
+                    dispatch({
+                        type: 'setTargetPath',
+                        payload: {
+                            key: '/shopDetail',
+                            value: pathname
+                        }
+                    })
+                }
+                else if (pathname === '/') {
+                    dispatch({
+                        type: 'setTargetPath',
+                        payload: {
+                            key: '/shopDetail',
+                            value: '/'
+                        }
+                    })
+                }
+            })
         }
     }
 }

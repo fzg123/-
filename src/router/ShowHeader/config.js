@@ -17,6 +17,7 @@ export default {
             },
             target: '/shoppingCart'
         },
-        { pathRegexp: /^\/submitOrder/, path: '/submitOrder' }
+        { pathRegexp: /^\/submitOrder/, path: '/submitOrder' },
+        { pathRegexp: /^\/shopDetail/, path: '/shopDetail' }
     ]
 }

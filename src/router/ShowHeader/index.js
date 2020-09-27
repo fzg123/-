@@ -32,7 +32,7 @@ function ShowHeader(props) {
                         if (flag) {
 
                             targetPath = props.quitTargetPath[_config.intercept[i].path];
-
+                          
                             if (targetPath !== null || _config.intercept[i].target) {
                                 if (_config.intercept[i].beforeLeave !== undefined) {
                                     _config.intercept[i].beforeLeave(value, props, (bool) => {
