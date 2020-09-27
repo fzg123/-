@@ -37,17 +37,17 @@ function ShowHeader(props) {
                                 if (_config.intercept[i].beforeLeave !== undefined) {
                                     _config.intercept[i].beforeLeave(value, props, (bool) => {
                                         if (bool) {
-                                            props.history.push(_config.intercept[i].target || targetPath);
+                                            props.history.replace(_config.intercept[i].target || targetPath);
                                         }
                                     });
                                 }
                                 else {
-                                    props.history.push(_config.intercept[i].target || targetPath);
+                                    props.history.replace(_config.intercept[i].target || targetPath);
                                 }
 
                             }
                             else {
-                                props.history.push('/');
+                                props.history.replace('/');
                             }
 
                         } else {

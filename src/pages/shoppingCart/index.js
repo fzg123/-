@@ -37,10 +37,15 @@ function shoppingCart(props) {
             message.info('至少选择一个商品，再点击去结算');
             return;
         }
+        props.setTargetPath({
+            key: '/submitOrder',
+            value: props.match.url
+        })
         props.history.push({
             pathname: '/submitOrder',
             state: {
-                source: '/shoppingCart'
+                source: '/shoppingCart',
+                originSource: '/shoppingCart'
             }
         })
     }
@@ -125,6 +130,12 @@ const mapDispatchToProps = dispatch => ({
         return dispatch({
             type: 'shopCartItem/fetchRemoveShopItem',
             payload: id
+        })
+    },
+    setTargetPath(obj) {
+        dispatch({
+            type: 'quitTargetPath/setTargetPath',
+            payload: obj
         })
     }
 })

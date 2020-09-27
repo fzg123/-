@@ -36,9 +36,11 @@ function AddAddress(props) {
 
             message.success('新增地址成功');
             if (props.location.state && props.location.state.targetPath === '/submitOrder') {
+                console.log(props.location.state)
                 props.history.push({
                     pathname: '/submitOrder',
                     state: {
+                        ...props.location.state,
                         data: {
                             addressText: getAddress(address, data.address, false),
                             addressName: data.name,

@@ -16,6 +16,7 @@ export default {
                 ctx.setFlagShowModal(leavePay(props, null, ctx, callback, message));
             },
             target: '/shoppingCart'
-        }
+        },
+        { pathRegexp: /^\/submitOrder/, path: '/submitOrder' }
     ]
 }

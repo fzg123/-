@@ -29,16 +29,17 @@ function AddressManage(props) {
     const source = props.location.state != null && props.location.state.source === '/submitOrder';
     //点击了地址项
     const clickItemHandle = ({ addressId, addressText, addressName, addressPhone }) => {
+        console.log(props.location.state)
         if (props.location.state != null && props.location.state.source === '/submitOrder') {
             props.history.push({
                 pathname: props.location.state.source,
                 state: {
+                    ...props.location.state,
                     data: { addressId, addressText, addressName, addressPhone },
-                    source: '/shoppingCart',
                     dataType: 'address',
+                    source: '/shoppingCart',
                 }
             })
-
         }
     }
     // 点击了添加地址
@@ -47,9 +48,14 @@ function AddressManage(props) {
         if (source) {
             state = { targetPath: '/submitOrder' };
         }
+        console.log(props.location.state)
         props.history.push({
+           
             pathname: props.location.pathname + '/addAddress',
-            state
+            state: {
+                ...props.location.state,
+                ...state
+            }
         })
     }
     // 点击了编辑

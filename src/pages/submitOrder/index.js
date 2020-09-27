@@ -21,18 +21,22 @@ function SubmitOrder(props) {
     let flagPage = allowStepPageName.some(e => new RegExp('^' + e).test(state.source));
     if (!(state && flagPage)) props.history.push('/');
     let sourcePath = state.source;  // 来这个页面的路径
+    let originSource = state.originSource;
     const [shopDatas, setshopDatas] = useState({ data: [], status: 'loading' });  //商品信息
     const [address, setaddress] = useState({ data: {}, states: 'loading' });     // 地址信息
     useEffect(() => { // 得到商品信息
         (async function () {
-            if (new RegExp('^/shoppingCart').test(sourcePath)) {
+          
+            if (new RegExp('^/shoppingCart').test(originSource)) {
                 const shopItems = (await getAllShop(props.loginData.userId)).data.result;//得到购物车中数据
                 let r = getActiveShopItem(shopItems);  // 得到购物车中选中的商品
                 r = mapServerDataToData(r, props); // 由于从服务端获取的数据属性名 跟 视图使用的属性名不一致 所以转换一下
                 setshopDatas({ data: r, status: 'idle' });
             }
-            else if (new RegExp('^/shopDetail').test(sourcePath)) {
-                setshopDatas({ data: [props.location.state], status: 'idle' });
+            else if (new RegExp('^/shopDetail').test(originSource)) {
+                setshopDatas({ data: [props.location.state.shopData], status: 'idle' });
+            }else{
+
             }
         }())
     }, [])
@@ -40,7 +44,7 @@ function SubmitOrder(props) {
         (async function () {
             let data = null;
             const state = props.location.state;
-
+         
             if (state != null && state.dataType === 'address') {
                 data = state.data;
             }

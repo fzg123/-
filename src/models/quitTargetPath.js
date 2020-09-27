@@ -3,10 +3,11 @@ export default {
         '/myBoon': null,
         '/myOrder': null,
         '/orderAccomplish': null,
-        '/submitOrder': '/shoppingCart'
+        '/submitOrder': null
     },
     reducers: {
         setTargetPath(state, { payload: { key, value } }) {
+            console.log(key, value)
             return {
                 ...state,
                 [key]: value

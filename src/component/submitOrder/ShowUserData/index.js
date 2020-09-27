@@ -9,10 +9,12 @@ import NotDefaultAddress from '../../submitOrder/NotDefaultAddress'
 import { connect } from 'dva'
 import { withRouter } from 'umi'
 function ShowUserData(props) {
+    
     const clickHandle = _ => props.history.push({
         pathname: '/addressManage',
         state: {
-            source: '/submitOrder'
+            ...props.location.state,
+            source: '/submitOrder',
         }
     });
     return (

@@ -70,15 +70,23 @@ function ShopDetail(props) {
         if (props.loginData === null) {
             value.setFlagShowModal(notLoginShowData(props, { path: props.location.pathname }, value));
         }
+        props.setTargetPath({
+            key:'/submitOrder',
+            value: props.match.url
+        });
         props.history.push({
             pathname: '/submitOrder',
             state: {
+                shopData: {
+
+                    name: shopData.fruitName,
+                    msg: shopData.fruitText,
+                    imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
+                    num: 1,
+                    price: shopData.fruitPrice
+                },
                 source: '/shopDetail/' + shopData.fruitId,
-                name: shopData.fruitName,
-                msg: shopData.fruitText,
-                imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
-                num: 1,
-                price: shopData.fruitPrice
+                originSource: '/shopDetail/' + shopData.fruitId
             }
         })
     }
@@ -166,6 +174,12 @@ const mapDispatchToProps = dispatch => ({
         dispatch({
             type: 'shopCartItem/fetchShopItems',
             payload: id
+        })
+    },
+    setTargetPath(obj) {
+        dispatch({
+            type: 'quitTargetPath/setTargetPath',
+            payload: obj
         })
     }
 })
