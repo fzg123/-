@@ -7,7 +7,7 @@ import Counter from '../../../common/Counter'
 export default function ShopListItem(props) {
 
     return (
-        <li className={styles['shop-list-item']}>
+        <li className={styles['shop-list-item']} >
             <div className={styles['enter']}>
                 <img
                     onClick={() => {
@@ -16,13 +16,14 @@ export default function ShopListItem(props) {
                             status: props.isEnter ? 0 : 1,
                             index: props.index
                         })
+
                     }}
                     src={props.isEnter ? enter : notEnter}
                     alt=""
                 />
             </div>
             <div className={styles['img']}>
-                <img src={props.imgSrc} alt="" />
+                <img src={props.imgSrc} alt="" onClick={() => props.onClick && props.onClick(props.id)} />
             </div>
             <div className={styles['price-msg']}>
 

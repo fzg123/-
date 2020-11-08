@@ -18,7 +18,7 @@ export default function index(props) {
             id: e.fruit.fruitId,
             shoppingId: e.shoppingId
         }
-        return (<ShopListItem {...obj} index={i} onChange={(newShopData) => {
+        return (<ShopListItem onClick={id => props.onClick && props.onClick(id)} {...obj} index={i} onChange={(newShopData) => {
             props.onChange(newShopData);
         }} key={i} {...e}></ShopListItem>)
     })

@@ -15,7 +15,7 @@ Counter.defaultProps = {
 }
 export default function Counter(props) {
     return (
-        <div className={styles['counter']}>
+        <div className={styles['counter']} onClick={(e) => e.stopPropagation()}>
             <img
                 onClick={() => {
                     if (props.num === props.min) props.onChange(props.num);

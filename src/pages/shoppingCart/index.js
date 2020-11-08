@@ -68,13 +68,16 @@ function shoppingCart(props) {
             })
         }
     }
-
-    const notData = <div className={styles['bottom']}><NotData /></div>; // 没有数据要展示的内容
+    // 点击了某一个商品
+    const clickShopItemHandle = (shopId) => {
+        props.history.push('/shopDetail/' + shopId);
+    }
+    const notData = <div className={styles['bottom']}><NotData text='购物车暂无商品哟, 快去选购吧!' /></div>; // 没有数据要展示的内容
     const content = (props.shopDatas.length !== 0 ?
         <>
             <Header onDelete={() => { deleteItems() }}></Header>
             {/* 商品数据来自于仓库 */}
-            <ShopList onChange={(newShopData) => {
+            <ShopList onClick={clickShopItemHandle} onChange={(newShopData) => {
                 props.setShopitem(newShopData);
             }} datas={props.shopDatas}></ShopList>
 

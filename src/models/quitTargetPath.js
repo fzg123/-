@@ -31,7 +31,16 @@ export default {
 
             history.listen((l, a) => {
                 const pathname = l.pathname;
-                if (new RegExp('^\/getIntoBuy').test(pathname)) {
+                if (
+                    new RegExp('^\/getIntoBuy').test(pathname)
+                    ||
+                    new RegExp('^\/vogueFruit').test(pathname)
+                    ||
+                    new RegExp('^\/shoppingCart').test(pathname)
+                    ||
+                    pathname === '/'
+
+                ) {
                     dispatch({
                         type: 'setTargetPath',
                         payload: {
@@ -40,24 +49,7 @@ export default {
                         }
                     })
                 }
-                else if (new RegExp('^\/vogueFruit').test(pathname)) {
-                    dispatch({
-                        type: 'setTargetPath',
-                        payload: {
-                            key: '/shopDetail',
-                            value: pathname
-                        }
-                    })
-                }
-                else if (pathname === '/') {
-                    dispatch({
-                        type: 'setTargetPath',
-                        payload: {
-                            key: '/shopDetail',
-                            value: '/'
-                        }
-                    })
-                }
+
             })
         }
     }

@@ -111,7 +111,7 @@ export const getMyOrder = async (id) => (await ajax({ url: host + '/api/order/se
 export const commitOrder = async (data) => (await ajax({ url: host + '/api/order/addOrder', data })).data;
 // 支付接口
 export const orderPay = async (data) => (await ajax({ url: host + `/api/order/updateOrderStatus`, data })).data;
-// 提交购物车中一个订单
+// 从购物车中 提交订单
 export const addOrder = async (data) => (await ajax({ url: host + '/api/order/clearShoping', data })).data;
 // 从商品详情页 提交订单
 export const directAddOrder = async (data) => (await ajax({ url: host + '/api/order/addOrder', data })).data;

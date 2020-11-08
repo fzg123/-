@@ -71,7 +71,7 @@ function ShopDetail(props) {
             value.setFlagShowModal(notLoginShowData(props, { path: props.location.pathname }, value));
         }
         props.setTargetPath({
-            key:'/submitOrder',
+            key: '/submitOrder',
             value: props.match.url
         });
         props.history.push({
@@ -83,7 +83,8 @@ function ShopDetail(props) {
                     msg: shopData.fruitText,
                     imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
                     num: 1,
-                    price: shopData.fruitPrice
+                    price: shopData.fruitPrice,
+                    shopId: shopData.fruitId
                 },
                 source: '/shopDetail/' + shopData.fruitId,
                 originSource: '/shopDetail/' + shopData.fruitId
