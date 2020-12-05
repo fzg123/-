@@ -66,30 +66,35 @@ function ShopDetail(props) {
     }
 
     // 直接购买操作
-    const onGoBuy = async () => {
+    const onGoBuy = async (value) => {
         if (props.loginData === null) {
             value.setFlagShowModal(notLoginShowData(props, { path: props.location.pathname }, value));
+         
         }
-        props.setTargetPath({
-            key: '/submitOrder',
-            value: props.match.url
-        });
-        props.history.push({
-            pathname: '/submitOrder',
-            state: {
-                shopData: {
+        else {
+            props.setTargetPath({
+                key: '/submitOrder',
+                value: props.match.url
+            });
+            props.history.push({
+                pathname: '/submitOrder',
+                state: {
+                    shopData: {
 
-                    name: shopData.fruitName,
-                    msg: shopData.fruitText,
-                    imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
-                    num: 1,
-                    price: shopData.fruitPrice,
-                    shopId: shopData.fruitId
-                },
-                source: '/shopDetail/' + shopData.fruitId,
-                originSource: '/shopDetail/' + shopData.fruitId
-            }
-        })
+                        name: shopData.fruitName,
+                        msg: shopData.fruitText,
+                        imgSrc: joinImgSrc(shopData.fruitImagesUrl, shopData.fruitImagesCount != 1),
+                        num: 1,
+                        price: shopData.fruitPrice,
+                        shopId: shopData.fruitId
+                    },
+                    source: '/shopDetail/' + shopData.fruitId,
+                    originSource: '/shopDetail/' + shopData.fruitId
+                }
+            })
+        }
+
+
     }
 
 
@@ -152,7 +157,7 @@ function ShopDetail(props) {
                     <div className={styles["go-buy"]}>
                         <GoBuy
                             onGoShopCar={() => onGoShopCar(value)}
-                            onGoBuy={onGoBuy}
+                            onGoBuy={()=>onGoBuy(value)}
                             shopNum={props.shopCartItem !== null ? props.shopCartItem.length : props.shopCartItem}
                             setFlagShowModal={value.setFlagShowModal}
                             isFlagQG={shopData.fruitIsTime} // 是否为抢购 1为抢购 0为不抢购

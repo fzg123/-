@@ -17,6 +17,7 @@ function Mine(props) {
             <div className={styles['operate-wrapper']}>
                 <OperateOption {...viewDatas.payData}></OperateOption>
                 <OperateOption {...viewDatas.functionSelect}></OperateOption>
+            
                 {props.loginData !== null ? (<OutLogin />) : null}
             </div>
 

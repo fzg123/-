@@ -33,6 +33,18 @@ export const notLoginShowData = (props, state, ctx) => {
         }
     }
 }
+// 确认是否退出
+export const enterOutLogin = (props, state, ctx) => {
+    return {
+        title: '提示',
+        children: '真的要退出登录吗',
+        afterEnterCallback: () => {
+            
+            // props.outLogin(props.outLogin);
+
+        }
+    }
+}
 //当离开支付里面时  弹出的提示框 的 内容
 export const leavePay = (props, state, ctx, callback, message) => {
     return {
