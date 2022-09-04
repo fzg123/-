@@ -29,7 +29,7 @@ export default function LoginFrom(props) {
                     },
                 ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" value={props.userName} onChange={e=>{props.onUserNameChange(e.target.value)}} />
+                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="请输入账号" value={props.userName} onChange={e=>{props.onUserNameChange(e.target.value)}} />
             </Form.Item>
             <Form.Item
                 name="password"
@@ -45,7 +45,7 @@ export default function LoginFrom(props) {
                     onChange={(e) => props.onPwdChange(e.target.value)}
                     prefix={<LockOutlined className="site-form-item-icon" />}
                     type="password"
-                    placeholder="Password"
+                    placeholder="请输入密码"
                 />
             </Form.Item>
 

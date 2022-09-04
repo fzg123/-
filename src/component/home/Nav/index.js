@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './index.css'
 import NavItem from './NavItem'
-import x from '../../../assets/min-img/img/1.png'
-import c from '../../../assets/min-img/img/2.png'
-import d from '../../../assets/min-img/img/3.png'
-import m from '../../../assets/min-img/img/4.png'
-import j from '../../../assets/min-img/img/5.png'
-import ctx from '../../../layouts/context'
+import x from '@/assets/min-img/img/1.png'
+import c from '@/assets/min-img/img/2.png'
+import d from '@/assets/min-img/img/3.png'
+import m from '@/assets/min-img/img/4.png'
+import j from '@/assets/min-img/img/5.png'
+import ctx from '@/layouts/context'
 import {withRouter} from 'umi'
 function Nav(props) {
     return (

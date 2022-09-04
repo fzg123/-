@@ -8,8 +8,7 @@ import { message } from 'antd'
 import SelectAddress from '../../../component/common/SelectAddress'
 import Mask from '../../../component/common/Mask'
 import Address from '../../../component/common/Address'
-import { getAddress } from '@/utils'
-import globalCtx from '../../../layouts/context'
+
 
 /**
  * 新增地址

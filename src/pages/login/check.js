@@ -12,10 +12,6 @@ export default function (userName, pwd) {
             params: [userName, undefined],
         });
         chenkIn.add({
-            name: 'minLength',
-            params: [userName, undefined],
-        });
-        chenkIn.add({
             name: 'maxLength',
             params: [userName, undefined],
         })
@@ -29,10 +25,6 @@ export default function (userName, pwd) {
         })
         chenkIn.add({
             name: 'improperCommand',
-            params: [pwd, undefined],
-        });
-        chenkIn.add({
-            name: 'minLength',
             params: [pwd, undefined],
         });
         chenkIn.add({

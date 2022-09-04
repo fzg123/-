@@ -13,7 +13,7 @@ function L({ staticContext, dispatch, ...props }) {
             {value => (
                 
                 <a
-
+                    style={{fontSize: 'inherit'}}
                     onClick={(e) => {
 
                         e.preventDefault();
