@@ -3,7 +3,7 @@ import TakeTurns from '../component/TakeTurns'
 import { useEffect, useState } from 'react'
 import Nav from '../component/home/Nav'
 import FlashSale from '../component/home/FlashSale'
-import { createRef } from 'react' 
+import { createRef } from 'react'
 import Advert from '../component/home/Advert'
 import HopShop from '@/component/home/HotShop'
 import Inessential from '../component/common/Inessential'
@@ -25,13 +25,14 @@ function Home(props) {
     // 由于后台并没有提供数据 这里使用 mock 数据 顶替
     setalternateData(lunBoData);
   }, [])
+
   return (
 
     <>
 
       <div ref={primaryRef} className={styles.primary}>
         <TakeTurns
-          imgSrcs={alternateData.map(e => joinImgSrc(e.fruitImagesUrl, e.fruitImagesCount > 1))}
+          imgSrcs={alternateData.map(e => e.fruitImagesUrl)}
           imgHrefs={alternateData.map(e => '/shopDetail/' + e.fruitId)}
           width={TakeTurnsWidth - 40}
           height={'19rem'}

@@ -17,7 +17,7 @@ export default function HotShop() {
                 showCount: 3
             });
             setshopDatas({
-                data: r.data.result,
+                data: r.data,
                 loading: false
             });
         }())

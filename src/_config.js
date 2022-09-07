@@ -12,7 +12,7 @@ export const intercept = ['/myRedPacket',
 ];
 // 主域名
 
-export const host = 'http://localhost:8888';
+export const host = 'http://localhost:3001';
 
 // 图片的网络地址主要的前缀
 
@@ -68,31 +68,31 @@ export const leavePay = (props, state, ctx, callback, message) => {
 
 export const lunBoData = [
     {
-        fruitId: 6,
+        fruitId: 8,
         fruitImagesCount: 1,
         fruitInventedPrice: 8.1,
         fruitPrice: 9.1,
-        fruitImagesUrl: "/拼盘3.jpg",
+        fruitImagesUrl: "http://localhost:3001/images/4f68e95ac2e3e8d6.jpeg",
         fruitName: "拼盘产品3",
         fruitText: "这个拼盘第三好吃",
         fruitIsTime: 0
     },
     {
-        fruitId: 9,
+        fruitId: 6,
         fruitImagesCount: 1,
         fruitInventedPrice: 23.1,
         fruitPrice: 14.1,
-        fruitImagesUrl: "/拼盘6.jpg",
+        fruitImagesUrl: "http://localhost:3001/images/5b4308b7N03a19b93.jpeg",
         fruitName: "拼盘产品6",
         fruitText: "这个拼盘第",
         fruitIsTime: 0,
     },
     {
-        fruitId: 23,
+        fruitId: 10,
         fruitImagesCount: 4,
         fruitInventedPrice: 15.8,
         fruitPrice: 11.9,
-        fruitImagesUrl: "/水蜜桃.jpg",
+        fruitImagesUrl: "http://localhost:3001/images/5e84a721ca04fb96.jpeg",
         fruitName: "水蜜桃",
         fruitText: "xxxxxx",
         fruitIsTime: 0,

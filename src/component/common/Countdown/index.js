@@ -34,7 +34,9 @@ export default function Countdown(props) {
                 if (time.s === 0) {
                     if (stopCountdown) return;
                     props.timeEnd();
-                    setstopCountdown(true);
+                    if (!props.noAgain) {
+                        settime(props.time)
+                    }
                     return checkUp;
                 }
                 timer = setTimeout(() => {

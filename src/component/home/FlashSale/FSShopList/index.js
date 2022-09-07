@@ -36,11 +36,11 @@ export default function index(props) {
         (async function () {
             const result = await getXianShiQG();
             setshopData({
-                data: result.data.result,
+                data: result.data,
                 status: 'finish'
             });
         }())
-    }, [])
+    }, [props.characteristic])
 
 
 
@@ -56,9 +56,9 @@ export default function index(props) {
                 waitAutoTime={3000}
             />
                 :
-            
+
                 <div className={styles['center']}>
-                    <Loading/>
+                    <Loading />
                 </div>
             }
 

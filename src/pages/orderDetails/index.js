@@ -25,7 +25,7 @@ function orderDetails(props) {
         });
         message.success('收货成功');
         const result = await selectOrder(orderId);
-        setOrderData(result.data.result[0]);
+        setOrderData(result.data[0]);
     }
     // 去评价操作
     const onAppraise = () => {
@@ -58,7 +58,7 @@ function orderDetails(props) {
         })
         message.success('取消成功');
         const result = await selectOrder(orderId);
-        setOrderData(result.data.result[0]);
+        setOrderData(result.data[0]);
     }
     return (
         <div className={styles['order-defails']}>

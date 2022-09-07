@@ -31,7 +31,7 @@ function pay(props) {
                 shopId: props.shopId,
                 status:2
             });
-            if(result.data.result){
+            if(result.data){
                 message.success('支付成功');
                 // 扣款了  所有更新一下 仓库个人信息
                 props.upDataLoginData(props.loginData.userId);

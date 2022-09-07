@@ -27,10 +27,11 @@ export default function index(props) {
                 </div>
                 <div className={styles.price}>
                     <span>
-                        {props.price}
+                        {props._price}
                     </span>
                     <span>
-                        {props._price}
+
+                        {props.price}
                     </span>
                 </div>
             </li>

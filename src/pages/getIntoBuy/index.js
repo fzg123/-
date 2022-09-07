@@ -9,7 +9,7 @@ export default function index() {
         (async function () {
             const result = await ruYuanCaiGou();
             setshopData({
-                data:result.data.result,
+                data:result.data,
                 status:false
             });
            

@@ -51,7 +51,7 @@ function SubmitOrder(props) {
             else {
                 const result = await getDefaultHarvestAddress(props.loginData.userId);
 
-                data = result.data.result;
+                data = result.data;
             }
             setaddress({
                 data,

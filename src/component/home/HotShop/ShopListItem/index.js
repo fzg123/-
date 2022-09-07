@@ -7,29 +7,28 @@ import { message } from 'antd'
 import { addShopCart } from '@/api'
 import { connect } from 'dva'
 import { addShopingCart } from '../../../../_config'
-function index(props) {
-    let imgSrc = joinImgSrc(props.fruitImagesUrl, props.fruitImagesCount > 1);
+function index({ shopImages, name, msg, currentPrice, price, id }) {
+
     return (
         <li className={styles['shop-list-item']}>
-            <Link to={'/shopDetail/' + props.fruitId}>
+            <Link to={'/shopDetail/' + id}>
                 <div className={styles.left}>
-                    <img src={imgSrc} alt="" />
+                    <img src={shopImages} alt="" />
 
                 </div>
                 <div className={styles.right}>
                     <p>
-                        {props.fruitName}
+                        {name}
                     </p>
                     <p>
-                        {props.fruitText}
+                        {msg}
                     </p>
                     <p className={styles.type}>
-                        {/* {props.type.map((e, i) => (<span key={i}>{e}</span>))} */}
                         <span >满减</span>
                     </p>
                     <p>
-                        <span className={styles['cur-price']}>￥{props.fruitPrice}</span>
-                        <span className={styles['pre-price']}>￥ {props.fruitInventedPrice}</span>
+                        <span className={styles['cur-price']}>￥{price}</span>
+                        <span className={styles['pre-price']}>￥ {currentPrice}</span>
                     </p>
                 </div>
                 <div
@@ -37,7 +36,7 @@ function index(props) {
                     onClick={(e) => {
                         addShopingCart(
                             e,
-                            { fruitId: props.fruitId, userId: props.loginData.userId },
+                            { fruitId: id, userId: 1},
                             addShopCart,
                             (bool) => {
                                 message.success('添加购物车成功');

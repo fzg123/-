@@ -27,7 +27,7 @@ function ShopDetail(props) {
             const result = await getShopDetail(props.match.params.id);
             setshopData({
                 ...shopData,
-                ...result.data.result
+                ...result.data
             });
         }())
 

@@ -4,7 +4,7 @@ import s from '@/assets/min-img/img/6.png'
 import { NavLink } from 'umi'
 import Countdown from '../../../common/Countdown'
 import DaoJiShi from '../../DaoJiShi'
-export default function index() {
+export default function index({ onUpdata }) {
     return (
         <div className={styles.top}>
             <div className={styles.left}>
@@ -25,10 +25,10 @@ export default function index() {
                         <Countdown
                             time={{
                                 s: 0,
-                                f: 13,
-                                m: 60
+                                f: 0,
+                                m: 5
                             }}
-                            timeEnd={()=>{console.log('时间到了')}}
+                            timeEnd={() => { onUpdata() }}
                             render={DaoJiShi}
                         ></Countdown>
                     </div>

@@ -1,30 +1,22 @@
 import React from 'react'
 import styles from './index.css'
 import ShopItem from '../FSShopList/ShopItem'
-import { imgSrcRoot } from '@/_config.js'
-import joinImgSrc from '../../../../utils/joinImgSrc'
 export default function FSShopItems(props) {
-     
-
     const shops = props.datas.map((e, i) => {
-        let imgSrc = imgSrcRoot + e.fruitImagesUrl;
-        if (e.fruitImagesCount > 1) {
-            imgSrc = joinImgSrc(e.fruitImagesUrl);
-        }
-        
+        const { shopImages, name, msg, currentPrice, price, id } = e;
         return <ShopItem
-            key={e.fruitId}
-            fruitId={e.fruitId}
-            shopName={e.fruitName}
-            path={'/shopDetail/' + e.fruitId}
-            price={'￥' + e.fruitPrice}
-            _price={'￥' + e.fruitInventedPrice}
-            imgSrc={imgSrc}
+            key={id}
+            fruitId={id}
+            shopName={name}
+            path={'/shopDetail/' + id}
+            price={'￥' + currentPrice}
+            _price={'￥' + price}
+            imgSrc={shopImages}
         />
 
 
     })
-    return ( 
+    return (
         <ul className={styles['shop-items']}>
             {shops}
         </ul>
